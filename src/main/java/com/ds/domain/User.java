@@ -1,10 +1,25 @@
 package com.ds.domain;
 
+/**
+ * 用户的实体类
+ * @author asus
+ *
+ */
 public class User {
+	/**
+	 * 用户的id
+	 */
 	private int userId;
+	/**
+	 * 用户名
+	 */
 	private String username;
+	/**
+	 * 用户最后登录的日期
+	 */
 	private String lastIp;
-	
+	//用户的密码。
+	//private Stirng password;
 	public String getLastIp() {
 		return lastIp;
 	}
