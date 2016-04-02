@@ -23,18 +23,12 @@ import com.ds.domain.User;
 public class UserDaoBean implements UserDao{
 
 
-	
-	
+
+
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-	@Override
-	public User selectByUserId(int userId) {
-		// TODO Auto-generated method stub
-		String sql = "SELECT * FROM tb_user WHERE userId = ?";
-		Object[] params=new Object[]{userId};
-		return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(), params);
-	}
+
 
 	@Override
 	public User selectByUserName(String userName) {
@@ -50,37 +44,12 @@ public class UserDaoBean implements UserDao{
 				user.setLastIp(rs.getString("lastIp"));
 			}
 		});
-//		return user.getUserId() != null?user:null;
+		//		return user.getUserId() != null?user:null;
 		return user.getUserId() != 0?user:null;
-		
+
 	}
 
-	@Override
-	public List<User> selectAllUsers() {
-		// TODO Auto-generated method stub
-		final String sql="SELECT * FROM tb_user ORDER BY userId ASC";
-		
-		return jdbcTemplate.query(sql,new ResultSetExtractor<List<User>>(){
 
-			@Override
-			public List<User> extractData(ResultSet rs) throws SQLException,
-					DataAccessException {
-				// TODO Auto-generated method stub
-				List<User>users=new ArrayList<User>();
-				while(rs.next()){
-					User user=new User();
-					user.setUserId(rs.getInt("userId"));
-					user.setUsername(rs.getString("username"));
-					user.setLastIp(rs.getString("lastIp"));
-					users.add(user);
-				}
-				return users;
-			}
-
-			
-		});
-//		return jdbcTemplate.queryForList(sql, User.class);
-	}
 
 	@Override
 	public int insert(User user) {
@@ -89,10 +58,10 @@ public class UserDaoBean implements UserDao{
 		final Object[] params=new Object[]{
 				user.getUsername(),
 				user.getLastIp()};
-//		return jdbcTemplate.update(sql, params);
+		//		return jdbcTemplate.update(sql, params);
 		KeyHolder keyHolder=new GeneratedKeyHolder();
 		int rc=jdbcTemplate.update(new PreparedStatementCreator() {
-			
+
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con)
 					throws SQLException {
@@ -108,7 +77,7 @@ public class UserDaoBean implements UserDao{
 			user.setUserId(keyHolder.getKey().intValue());
 		}
 		return rc;
-		
+
 	}
 
 	@Override
@@ -136,8 +105,41 @@ public class UserDaoBean implements UserDao{
 		// TODO Auto-generated method stub
 		String sql = "DELETE FROM tb_user WHERE userId = ?";
 		Object[] params=new Object[]{userId};
-		
+
 		return jdbcTemplate.update(sql,params);
+	}
+
+	@Override
+	public User selectById(int userId) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM tb_user WHERE userId = ?";
+		Object[] params=new Object[]{userId};
+		return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(), params);
+	}
+
+	@Override
+	public List<User> selectAll() {
+		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
+		final String sql="SELECT * FROM tb_user ORDER BY userId ASC";
+
+		return jdbcTemplate.query(sql,new ResultSetExtractor<List<User>>(){
+
+			@Override
+			public List<User> extractData(ResultSet rs) throws SQLException,
+			DataAccessException {
+				// TODO Auto-generated method stub
+				List<User>users=new ArrayList<User>();
+				while(rs.next()){
+					User user=new User();
+					user.setUserId(rs.getInt("userId"));
+					user.setUsername(rs.getString("username"));
+					user.setLastIp(rs.getString("lastIp"));
+					users.add(user);
+				}
+				return users;
+			}
+		});
 	}
 
 }

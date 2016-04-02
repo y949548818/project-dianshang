@@ -35,8 +35,8 @@ public class IndexController {
 	@ResponseBody
 	@RequestMapping("/alluser")
 	public String alluser(){
-		System.out.println(userDao.selectAllUsers().toString());
-		return userDao.selectAllUsers().toString();
+		System.out.println(userDao.selectAll().toString());
+		return userDao.selectAll().toString();
 	}
 	
 }
