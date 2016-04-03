@@ -22,10 +22,6 @@ import com.ds.domain.User;
 
 public class UserDaoBean implements UserDao{
 
-
-
-
-
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
@@ -122,7 +118,8 @@ public class UserDaoBean implements UserDao{
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		final String sql="SELECT * FROM tb_user ORDER BY userId ASC";
-
+		
+		
 		return jdbcTemplate.query(sql,new ResultSetExtractor<List<User>>(){
 
 			@Override
