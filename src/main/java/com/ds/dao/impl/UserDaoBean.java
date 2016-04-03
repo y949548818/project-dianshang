@@ -38,6 +38,7 @@ public class UserDaoBean implements UserDao{
 				user.setUserId(rs.getInt("userId"));
 				user.setUsername(rs.getString("username"));
 				user.setLastIp(rs.getString("lastIp"));
+				user.setPassword(rs.getString("password"));
 			}
 		});
 		//		return user.getUserId() != null?user:null;
@@ -110,9 +111,17 @@ public class UserDaoBean implements UserDao{
 		// TODO Auto-generated method stub
 		String sql = "SELECT * FROM tb_user WHERE userId = ?";
 		Object[] params=new Object[]{userId};
-		return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(), params);
+		//return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(), params);
+		List<User> lists= jdbcTemplate.query(sql, params, new BeanPropertyRowMapper<User>(User.class));
+		if(lists.size()==0){
+			return null;
+		}
+		else{
+			return lists.get(0);
+		}
 	}
-
+	
+	
 	@Override
 	public List<User> selectAll() {
 		// TODO Auto-generated method stub
@@ -132,6 +141,7 @@ public class UserDaoBean implements UserDao{
 					user.setUserId(rs.getInt("userId"));
 					user.setUsername(rs.getString("username"));
 					user.setLastIp(rs.getString("lastIp"));
+					user.setPassword(rs.getString("password"));
 					users.add(user);
 				}
 				return users;

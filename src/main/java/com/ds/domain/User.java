@@ -18,8 +18,11 @@ public class User {
 	 * 用户最后登录的日期
 	 */
 	private String lastIp;
-	//用户的密码。
-	//private Stirng password;
+	
+	/**
+	 * 用户的密码。
+	 */
+	private String password;
 	public String getLastIp() {
 		return lastIp;
 	}
@@ -40,6 +43,14 @@ public class User {
 		this.username = username;
 	}
 
+
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", lastIp=" + lastIp + "]";
