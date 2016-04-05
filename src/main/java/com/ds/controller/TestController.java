@@ -35,5 +35,7 @@ public class TestController {
 		User user=userInfoService.getUserByUserId(1);
 		return user.toString();
 	}
-	
+	public void t(){
+		
+	}
 }
