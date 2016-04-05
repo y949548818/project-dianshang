@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 import com.ds.dao.UserDao;
 import com.ds.domain.User;
@@ -34,6 +35,16 @@ public class MyTest {
 		User user=userInfoService.getUserByUserId(1);
 //		User user=userDao.selectById(1);
 		System.out.println(user);
+	}
+	@Test
+	public void test3(){
+		try{
+			
+			Assert.isNull("123", "不是null");
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	
