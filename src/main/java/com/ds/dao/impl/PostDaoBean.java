@@ -63,16 +63,34 @@ public class PostDaoBean implements PostDao {
 		return rc;
 	}
 
+	/**
+	 * 修改post的内容和标题，创建者id不允许修改
+	 */
 	@Override
 	public int update(int id, Post obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		String sql=""
+				+ "update tb_post "
+				+ "set "
+				+ " content=?, "
+				+ " title=? "
+				+ "where "
+				+ " postId=?";
+		Object[] params=new Object[]{
+				obj.getContent(),
+				obj.getTitle(),
+				id};
+		return jdbcTemplate.update(sql,params);
 	}
 
 	@Override
 	public int delete(int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		// TODO Auto-generated method stub
+		String sql = "DELETE FROM tb_post WHERE postId = ?";
+		Object[] params=new Object[]{id};
+
+		return jdbcTemplate.update(sql,params);
 	}
 
 }
