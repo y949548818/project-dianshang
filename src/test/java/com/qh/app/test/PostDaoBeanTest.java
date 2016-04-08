@@ -15,7 +15,7 @@ import com.ds.domain.Post;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
 @ContextConfiguration("file:src/main/webapp/WEB-INF/springmvc-servlet.xml") 
-public class PostTest {
+public class PostDaoBeanTest {
 
 	@Autowired
 	PostDao postDao;
