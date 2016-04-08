@@ -5,6 +5,6 @@ package com.ds.service;
  * @author qq245521957
  *
  */
-public interface PostService {
+public interface PostInfoService {
  
 }
