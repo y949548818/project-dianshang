@@ -1,5 +1,8 @@
 package com.ds.domain;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 /**
  * 这个类是帖子的实体类
  * @author asus
@@ -22,7 +25,18 @@ public class Post {
 	 * 帖子的内容
 	 */
 	private String content;
+	/**
+	 * 帖子发布的时间
+	 */
+	private Timestamp publishTime;
 	
+	
+	public Timestamp getPublishTime() {
+		return publishTime;
+	}
+	public void setPublishTime(Timestamp publishTime) {
+		this.publishTime = publishTime;
+	}
 	public String getContent() {
 		return content;
 	}
@@ -50,7 +64,12 @@ public class Post {
 	@Override
 	public String toString() {
 		return "Post [title=" + title + ", postId=" + postId + ", postAdmin=" + postAdmin + ", content=" + content
-				+ "]";
+				+ ", publishTime=" + publishTime + "]";
 	}
+	public Post() {
+		super();
+		this.setPublishTime(new Timestamp(new Date().getTime()));
+	}
+	
 	
 }

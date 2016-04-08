@@ -61,6 +61,7 @@ public class PostDaoBean implements PostDao {
 					post.setTitle(rs.getString("title"));
 					post.setPostAdmin(rs.getInt("postAdmin"));
 					post.setContent(rs.getString("content"));
+					post.setPublishTime(rs.getTimestamp("publishTime"));
 					posts.add(post);
 				}
 				return posts;
@@ -71,11 +72,13 @@ public class PostDaoBean implements PostDao {
 	@Override
 	public int insert(Post obj) {
 		// TODO Auto-generated method stub
-		final String sql="insert into tb_post(title,postAdmin,content) values(?,?,?)";
+		final String sql="insert into tb_post(title,postAdmin,content,publishTime) values(?,?,?,?)";
 		final Object[] params=new Object[]{
 				obj.getTitle(),
 				obj.getPostAdmin(),
-				obj.getContent()
+				obj.getContent(),
+				obj.getPublishTime()
+				
 				};
 		//		return jdbcTemplate.update(sql, params);
 		KeyHolder keyHolder=new GeneratedKeyHolder();
@@ -99,7 +102,7 @@ public class PostDaoBean implements PostDao {
 	}
 
 	/**
-	 * 修改post的内容和标题，创建者id不允许修改
+	 * 修改post的内容和标题，创建者id不允许修改,发布日期不允许修改
 	 */
 	@Override
 	public int update(int id, Post obj) {

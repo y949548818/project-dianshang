@@ -28,9 +28,10 @@ public class PostServiceBean implements PostInfoService,PostPublishService{
 	}
 
 	@Override
-	public void getPostTitle(int id) {
+	public String getPostTitle(int id) {
 		// TODO Auto-generated method stub
-		
+		Post post=postDao.selectById(id);
+		return post.getTitle();
 	}
 
 	

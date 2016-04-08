@@ -1,5 +1,9 @@
 package com.qh.app.test;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +61,12 @@ public class MyTest {
 	public void test101(){
 		System.out.println(commentdao.selectById(1).getContent());
 	}
-	
+	@Test
+	public void test111(){
+		Date date=new Date();
+		System.out.println(date.getTime());
+		Timestamp time=new Timestamp(date.getTime());
+		System.out.println(time);
+	}
 	
 }

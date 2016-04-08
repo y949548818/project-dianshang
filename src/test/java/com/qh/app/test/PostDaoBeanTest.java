@@ -1,5 +1,7 @@
 package com.qh.app.test;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -29,6 +31,7 @@ public class PostDaoBeanTest {
 		post.setTitle("这是第二22个帖子");
 		post.setPostAdmin(2);
 		post.setContent("这是内容22");
+		post.setPublishTime(new Timestamp(new Date().getTime()) );
 		int count=postDao.insert(post);
 		System.out.println(String.format("修改了%d条记录，post的postId为%d",count,post.getPostId() ));
 	}
@@ -61,7 +64,7 @@ public class PostDaoBeanTest {
 	 */
 	@Test
 	public void test4(){
-		Post post=postDao.selectById(2);
+		Post post=postDao.selectById(10);
 	
 		if(post!=null)
 		System.out.println(post);

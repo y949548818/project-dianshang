@@ -10,5 +10,5 @@ public interface PostInfoService {
 	/**
 	 * 获取帖子的标题
 	 */
-	void getPostTitle(int id);
+	String getPostTitle(int id);
 }
