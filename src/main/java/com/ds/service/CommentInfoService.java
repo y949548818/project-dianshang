@@ -8,7 +8,12 @@ import com.ds.domain.User;
  *
  */
 public interface CommentInfoService{
+	/**
+	 * 获取评论内容
+	 * @return
+	 */
 	String getCommentPublish();
 	int getCommentId();
 	User getCommentUser();
+	
 }
