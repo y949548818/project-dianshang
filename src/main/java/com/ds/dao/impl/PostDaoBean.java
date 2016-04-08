@@ -13,6 +13,7 @@ import org.springframework.jdbc.support.KeyHolder;
 
 import com.ds.dao.PostDao;
 import com.ds.domain.Post;
+import com.mysql.jdbc.Statement;
 
 public class PostDaoBean implements PostDao {
 
@@ -49,9 +50,9 @@ public class PostDaoBean implements PostDao {
 			public PreparedStatement createPreparedStatement(Connection con)
 					throws SQLException {
 				// TODO Auto-generated method stub
-				PreparedStatement st=con.prepareStatement(sql);
-				for(int i=0;i<params.length;i++){
-					st.setObject(i+1, params[i]);
+				PreparedStatement st=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+				for(int i=1;i<=params.length;i++){
+					st.setObject(i, params[i-1]);
 				}
 				return st;
 			}
