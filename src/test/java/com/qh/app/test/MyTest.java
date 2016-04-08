@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
+import com.ds.dao.CommentDao;
 import com.ds.dao.UserDao;
 import com.ds.domain.User;
 import com.ds.service.UserInfoService;
@@ -45,6 +46,16 @@ public class MyTest {
 		catch(Exception e){
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	@Autowired
+	CommentDao commentdao;
+	/**
+	 * 测试CommentDaoBean
+	 */
+	@Test
+	public void test101(){
+		System.out.println(commentdao.selectById(1).getContent());
 	}
 	
 	

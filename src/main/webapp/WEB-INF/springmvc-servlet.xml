@@ -21,6 +21,7 @@
 	<!-- DAO全配在这一段 -->
 
 	<bean id="userDao" class="com.ds.dao.impl.UserDaoBean" />
+	<bean id="commentdao" class="com.ds.dao.impl.CommentDaoBean" />
 	
 	
 	<bean id="userService" class="com.ds.service.impl.UserServiceBean" />

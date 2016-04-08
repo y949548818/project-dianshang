@@ -50,7 +50,6 @@ public class UserDaoBean implements UserDao{
 
 	@Override
 	public int insert(User user) {
-		// TODO Auto-generated method stub
 		final String sql="insert into tb_user(username,credits,password,lastVisit,lastIp) values(?,?,?,?,?)";
 		final Object[] params=new Object[]{
 				user.getUsername(),
@@ -62,7 +61,6 @@ public class UserDaoBean implements UserDao{
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con)
 					throws SQLException {
-				// TODO Auto-generated method stub
 				PreparedStatement st=con.prepareStatement(sql);
 				for(int i=0;i<params.length;i++){
 					st.setObject(i+1, params[i]);
@@ -79,7 +77,6 @@ public class UserDaoBean implements UserDao{
 
 	@Override
 	public int update(int userId, User user) {
-		// TODO Auto-generated method stub
 		String sql=""
 				+ "update tb_user "
 				+ "set "
@@ -108,7 +105,6 @@ public class UserDaoBean implements UserDao{
 
 	@Override
 	public User selectById(int userId) {
-		// TODO Auto-generated method stub
 		String sql = "SELECT * FROM tb_user WHERE userId = ?";
 		Object[] params=new Object[]{userId};
 		//return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(), params);
@@ -124,8 +120,6 @@ public class UserDaoBean implements UserDao{
 	
 	@Override
 	public List<User> selectAll() {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
 		final String sql="SELECT * FROM tb_user ORDER BY userId ASC";
 		
 		
