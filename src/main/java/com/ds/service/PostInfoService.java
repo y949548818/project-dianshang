@@ -7,4 +7,8 @@ package com.ds.service;
  */
 public interface PostInfoService {
  
+	/**
+	 * 获取帖子的标题
+	 */
+	void getPostTitle(int id);
 }
