@@ -47,5 +47,10 @@ public class Post {
 	public void setPostAdmin(int postAdmin) {
 		this.postAdmin = postAdmin;
 	}
+	@Override
+	public String toString() {
+		return "Post [title=" + title + ", postId=" + postId + ", postAdmin=" + postAdmin + ", content=" + content
+				+ "]";
+	}
 	
 }

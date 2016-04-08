@@ -1,5 +1,7 @@
 package com.qh.app.test;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +55,26 @@ public class PostTest {
 		int count=postDao.delete(1);
 		if(count>0)
 		System.out.println("删除成功");
+	}
+	/**
+	 * 测试selectById
+	 */
+	@Test
+	public void test4(){
+		Post post=postDao.selectById(2);
+	
+		if(post!=null)
+		System.out.println(post);
+	}
+	/**
+	 * 测试selectAll
+	 */
+	@Test
+	public void test5(){
+		List<Post> posts=postDao.selectAll();
+	
+		if(posts!=null)
+		System.out.println(posts);
 	}
 	
 }

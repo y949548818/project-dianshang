@@ -126,7 +126,6 @@ public class UserDaoBean implements UserDao{
 	@Override
 	public List<User> selectAll() {
 		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
 		final String sql="SELECT * FROM tb_user ORDER BY userId ASC";
 		
 		

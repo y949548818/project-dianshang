@@ -2,17 +2,23 @@ package com.ds.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import com.ds.dao.PostDao;
 import com.ds.domain.Post;
+import com.ds.domain.User;
 import com.mysql.jdbc.Statement;
 
 public class PostDaoBean implements PostDao {
@@ -22,15 +28,44 @@ public class PostDaoBean implements PostDao {
 
 	
 	@Override
-	public Post selectById(int userId) {
+	public Post selectById(int postId) {
 		// TODO Auto-generated method stub
-		return null;
+		String sql = "SELECT * FROM tb_post WHERE postId = ?";
+		Object[] params=new Object[]{postId};
+		//return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(), params);
+		List<Post> lists= jdbcTemplate.query(sql, params, new BeanPropertyRowMapper<Post>(Post.class));
+		if(lists.size()==0){
+			return null;
+		}
+		else{
+			return lists.get(0);
+		}
 	}
 
 	@Override
 	public List<Post> selectAll() {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql="SELECT * FROM tb_post ORDER BY postId ASC";
+		
+		
+		return jdbcTemplate.query(sql,new ResultSetExtractor<List<Post>>(){
+
+			@Override
+			public List<Post> extractData(ResultSet rs) throws SQLException,
+			DataAccessException {
+				// TODO Auto-generated method stub
+				List<Post>posts=new ArrayList<Post>();
+				while(rs.next()){
+					Post post=new Post();
+					post.setPostId(rs.getInt("postId"));
+					post.setTitle(rs.getString("title"));
+					post.setPostAdmin(rs.getInt("postAdmin"));
+					post.setContent(rs.getString("content"));
+					posts.add(post);
+				}
+				return posts;
+			}
+		});
 	}
 
 	@Override
