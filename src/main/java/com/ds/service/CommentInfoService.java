@@ -13,6 +13,10 @@ public interface CommentInfoService{
 	 * @return
 	 */
 	String getCommentPublish();
+	/**
+	 * 获取评论ID
+	 * @return
+	 */
 	int getCommentId();
 	User getCommentUser();
 	
