@@ -1,5 +1,7 @@
 package com.ds.dao;
 
-public interface PostDao {
+import com.ds.domain.Post;
 
+public interface PostDao  extends BaseDao<Post>{
+	
 }
