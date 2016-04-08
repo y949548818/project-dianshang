@@ -16,7 +16,4 @@ public class PostController {
 	public String publish(){
 		return "publish";
 	}
-	
-	
-	
 }
