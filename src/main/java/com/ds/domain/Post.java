@@ -18,6 +18,17 @@ public class Post {
 	 * 帖子发布者的id
 	 */
 	private int postAdmin;
+	/**
+	 * 帖子的内容
+	 */
+	private String content;
+	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -35,6 +46,11 @@ public class Post {
 	}
 	public void setPostAdmin(int postAdmin) {
 		this.postAdmin = postAdmin;
+	}
+	@Override
+	public String toString() {
+		return "Post [title=" + title + ", postId=" + postId + ", postAdmin=" + postAdmin + ", content=" + content
+				+ "]";
 	}
 	
 }

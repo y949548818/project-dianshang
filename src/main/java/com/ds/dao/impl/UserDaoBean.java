@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +62,8 @@ public class UserDaoBean implements UserDao{
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con)
 					throws SQLException {
-				PreparedStatement st=con.prepareStatement(sql);
+				PreparedStatement st=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+
 				for(int i=0;i<params.length;i++){
 					st.setObject(i+1, params[i]);
 				}
@@ -120,6 +122,7 @@ public class UserDaoBean implements UserDao{
 	
 	@Override
 	public List<User> selectAll() {
+
 		final String sql="SELECT * FROM tb_user ORDER BY userId ASC";
 		
 		
