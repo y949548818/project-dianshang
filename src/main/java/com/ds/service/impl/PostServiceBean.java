@@ -19,11 +19,15 @@ public class PostServiceBean implements PostInfoService,PostPublishService{
 	PostDao postDao;
 	
 	@Override
-	public void publish(Post post) {
+	public boolean publish(Post post) {
 		// TODO Auto-generated method stub
 		int count=postDao.insert(post);
 		if(count>0){
-			System.out.println("发布帖子成功");
+//			System.out.println("发布帖子成功");
+			return true;
+		}
+		else{
+			return false;
 		}
 	}
 

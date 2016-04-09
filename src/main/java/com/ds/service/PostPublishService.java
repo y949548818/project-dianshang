@@ -7,6 +7,7 @@ public interface PostPublishService {
 	/**
 	 * 发布一条评论
 	 * @param post
+	 * @return TODO
 	 */
-	void publish(Post post);
+	boolean publish(Post post);
 }
