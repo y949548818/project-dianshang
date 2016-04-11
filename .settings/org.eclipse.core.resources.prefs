@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/java/com/ds/controller/PostController.java=UTF-8
+encoding//src/main/java/com/ds/dao/BaseDao.java=UTF-8
 encoding//src/main/java/com/ds/dao/impl/CommentDaoBean.java=UTF-8
 encoding//src/main/java/com/ds/dao/impl/PostDaoBean.java=UTF-8
 encoding//src/main/java/com/ds/domain/Comment.java=UTF-8
