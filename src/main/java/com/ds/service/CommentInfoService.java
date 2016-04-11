@@ -12,12 +12,11 @@ public interface CommentInfoService{
 	 * 获取评论内容
 	 * @return
 	 */
-	String getCommentPublish();
+	String getCommentContent(int commentId);
 	/**
-	 * 获取评论ID
+	 * 获取评论发布者
 	 * @return
 	 */
-	int getCommentId();
-	User getCommentUser();
+	int getCommentUserId(int commentId);
 	
 }
