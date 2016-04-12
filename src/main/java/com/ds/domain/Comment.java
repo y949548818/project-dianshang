@@ -60,6 +60,10 @@ public class Comment {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+	@Override
+	public String toString() {
+		return "Comment [CommentId=" + commentId + ", content=" + content + ", userId=" + userId + ", postId=" + postId
+				+ ", Date=" + date.toString() + "]";
+	}
 	
 }

@@ -19,6 +19,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import com.ds.dao.CommentDao;
 import com.ds.domain.Comment;
 import com.ds.domain.User;
+import com.mysql.jdbc.Statement;
 
 public class CommentDaoBean implements CommentDao{
 
@@ -75,7 +76,7 @@ public class CommentDaoBean implements CommentDao{
 
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement st=con.prepareStatement(sql);
+				PreparedStatement st=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				for(int i=0;i<params.length;i++){
 					st.setObject(i+1, params[i]);
 				}
@@ -94,23 +95,27 @@ public class CommentDaoBean implements CommentDao{
 		String sql=""
 				+ "update tb_comment "
 				+ "set "
-				+ " commentId=?, "
 				+ " content=?, "
 				+ " date=?, "
 				+ " postId=?, "
-				+ " userId=?";
-	//	Object[] params=new Object[]{
-/*				comment.getUserId(),
-				comment.get,
-				comment.getLastIp()};*/
-//		return jdbcTemplate.update(sql,params);
-	return 0;
+				+ " userId=?"
+				+ " where"
+				+ " commentId=?";
+		Object[] params=new Object[]{
+				comment.getContent(),
+				comment.getDate(),
+				comment.getPostId(),
+				comment.getUserId(),
+				id
+		};
+		return jdbcTemplate.update(sql, params);
 	}
 
 	@Override
 	public int delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql="delete from tb_comment where commentId=?";
+		Object[] params=new Object[]{id};
+		return jdbcTemplate.update(sql, params);
 	}
 
 }
