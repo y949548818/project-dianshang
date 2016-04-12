@@ -15,18 +15,18 @@ import com.ds.domain.Comment;
 import com.ds.domain.ReturnStatus;
 import com.ds.service.impl.CommentServiceBean;
 /**
- * Õâ¸ö¿ØÖÆÆ÷Ö÷Òª¸ºÔð¶ÔComment¶ÔÏóµÄ²Ù×÷
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Commentï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½
  * @author y949548818
  */
 
 @Controller
-@RequestMapping("/post")
+@RequestMapping("/comment")
 public class CommentController {
 
 	@Autowired
 	CommentServiceBean commentService;
 	
-	@RequestMapping(value="/Cpublish",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
+	@RequestMapping(value="/publish",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
 	public void doPublish(@RequestParam(name="content",required=false,defaultValue="")String content,
 			@RequestParam(name="postId",required=false,defaultValue="-1")int postId,
 			@RequestParam(name="userId",required=false,defaultValue="-1")int userId,
@@ -34,7 +34,7 @@ public class CommentController {
 	{
 		ReturnStatus status=new ReturnStatus();
 		if("".equals(content)||userId==-1||postId==-1){
-			status.setReason("²ÎÊý²»È«");
+			status.setReason("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«");
 			status.setResultKey(ReturnStatus.ERROR);
 			writer.write(JSON.toJSONString(status));
 		}
