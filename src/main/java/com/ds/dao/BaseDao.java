@@ -2,7 +2,6 @@ package com.ds.dao;
 
 import java.util.List;
 
-import com.ds.domain.User;
 
 /**
  * Dao的基础接口

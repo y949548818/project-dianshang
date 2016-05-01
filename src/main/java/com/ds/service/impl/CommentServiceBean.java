@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ds.dao.CommentDao;
 import com.ds.domain.Comment;
-import com.ds.domain.User;
 import com.ds.service.CommentInfoService;
 import com.ds.service.CommentPublishService;
 

@@ -1,6 +1,5 @@
 package com.ds.service;
 
-import com.ds.domain.User;
 
 /**
  * 暂时先用做评论的服务接口

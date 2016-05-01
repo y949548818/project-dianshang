@@ -18,7 +18,6 @@ import org.springframework.jdbc.support.KeyHolder;
 
 import com.ds.dao.CommentDao;
 import com.ds.domain.Comment;
-import com.ds.domain.User;
 import com.mysql.jdbc.Statement;
 
 public class CommentDaoBean implements CommentDao{

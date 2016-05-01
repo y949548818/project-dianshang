@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alibaba.fastjson.JSON;
-import com.ds.dao.CommentDao;
 import com.ds.domain.Comment;
 import com.ds.domain.ReturnStatus;
 import com.ds.service.impl.CommentServiceBean;

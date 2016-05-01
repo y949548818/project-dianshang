@@ -1,6 +1,5 @@
 package com.qh.app.test;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 

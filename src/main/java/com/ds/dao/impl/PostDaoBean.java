@@ -18,7 +18,6 @@ import org.springframework.jdbc.support.KeyHolder;
 
 import com.ds.dao.PostDao;
 import com.ds.domain.Post;
-import com.ds.domain.User;
 import com.mysql.jdbc.Statement;
 
 public class PostDaoBean implements PostDao {
