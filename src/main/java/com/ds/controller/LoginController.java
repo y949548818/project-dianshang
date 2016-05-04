@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,36 +25,24 @@ public class LoginController {
 	UserDao userDao;
 	
 	@RequestMapping(value="login",method=RequestMethod.GET)
-	public String login(){
+	public String login(@ModelAttribute("user") User user){
 		return "login";
 	}
 	@RequestMapping(value="login",method=RequestMethod.POST)
-	public ModelAndView doLogin(@Valid User user,BindingResult result,HttpSession session){
-		ModelAndView mav=new ModelAndView();
-		List<ObjectError> lists=result.getAllErrors();
+	public String doLogin(@Valid @ModelAttribute("user") User user,BindingResult result,HttpSession session){
 		
-		List<String>errors=new ArrayList<>();
-		for(ObjectError error:lists){
-			System.out.println(error.getDefaultMessage());
-			errors.add(error.getDefaultMessage());
-		}
-		if(errors.size()>0){
-			mav.addObject("error", errors);
-			mav.setViewName("login");
-			return mav;
+		if(result.getErrorCount()>0){
+			return "login";
 		}
 		User res=userDao.selectByUserName(user.getUsername());
 		if(res!=null&&res.getPassword().equals(user.getPassword())){
 			session.setAttribute("user", res);
 			//TODO 需要再往login表里写入此用户登录了
-			mav.setViewName("redirect:/static/image/1.jpg");
-			return mav;
+			return "redirect:/static/image/1.jpg";
 		}
 		else{
-			errors.add("用户名或密码错误");
-			mav.addObject("error", errors);
-			mav.setViewName("login");
-			return mav;
+			result.addError(new ObjectError("login", "用户名或密码错误"));
+			return "login";
 		}
 
 	}

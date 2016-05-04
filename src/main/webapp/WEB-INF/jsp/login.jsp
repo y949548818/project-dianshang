@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,20 +20,25 @@
 						</h3>
 					</div>
 					<div class="panel-body">
-						<div class="alert">${error}</div>
-						<form action='<c:url value="/login" />' role="form" method="post">
+						
+						<form:form action='/project-dianshang/login' role="form" method="post" modelAttribute="user">
+							<spring:hasBindErrors name="user">
+								<div class="alert alert-danger" role="alert">
+									<form:errors path="*" />
+								</div>
+							</spring:hasBindErrors>
 							<div class="form-group">
 								<label for="username">用户名：</label>
-								<input type="text" class="form-control" name="username" placeholder="请输入用户名"/>
+								<form:input  class="form-control" path="username" placeholder="请输入用户名" />
 							</div>
 							<div class="form-group">
 								<label for="password">
 									密码：
 								</label>
-								<input type="password" class="form-control" name="password" placeholder="请输入密码" />
+								<form:password  class="form-control"  path="password" placeholder="请输入密码" />
 							</div>
 							<input type="submit" class="btn btn-default" />
-						</form>
+						</form:form>
 					</div>
 				</div>
 			</div>
