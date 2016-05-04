@@ -51,10 +51,6 @@ public class User {
 		this.password = password;
 	}
 	
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", lastIp=" + lastIp + "]";
-	}
 	public User(int userId, String username, String lastIp, int age) {
 		super();
 		this.userId = userId;
@@ -64,6 +60,11 @@ public class User {
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", lastIp=" + lastIp + ", password=" + password
+				+ "]";
 	}
 	
 }
