@@ -1,5 +1,8 @@
 package com.ds.domain;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * 用户的实体类
  * @author asus
@@ -13,6 +16,7 @@ public class User {
 	/**
 	 * 用户名
 	 */
+	@Pattern(regexp="^[a-zA-Z][a-zA-Z0-9-_]{5,15}$",message="用户名不规范")
 	private String username;
 	/**
 	 * 用户最后登录的日期
@@ -22,6 +26,7 @@ public class User {
 	/**
 	 * 用户的密码。
 	 */
+	@Pattern(regexp="^.{6,18}$",message="密码长度不正确")
 	private String password;
 	public String getLastIp() {
 		return lastIp;

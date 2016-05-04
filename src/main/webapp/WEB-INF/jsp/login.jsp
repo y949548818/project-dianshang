@@ -20,6 +20,7 @@
 						</h3>
 					</div>
 					<div class="panel-body">
+						<div class="alert">${error}</div>
 						<form action='<c:url value="/login" />' role="form" method="post">
 							<div class="form-group">
 								<label for="username">用户名：</label>
