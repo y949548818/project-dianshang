@@ -6,10 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>用户登录</title>
 <%@ include file="/include/header.jsp"%>
 </head>
 <body>
+<%@ include file="/include/nav.jsp"%>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
@@ -37,7 +38,7 @@
 								</label>
 								<form:password  class="form-control"  path="password" placeholder="请输入密码" />
 							</div>
-							<input type="submit" class="btn btn-default" />
+							<input type="submit" class="btn btn-primary" />
 						</form:form>
 					</div>
 				</div>
