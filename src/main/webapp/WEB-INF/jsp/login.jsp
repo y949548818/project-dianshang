@@ -33,9 +33,7 @@
 								<form:input  class="form-control" path="username" placeholder="请输入用户名" />
 							</div>
 							<div class="form-group">
-								<label for="password">
-									密码：
-								</label>
+								<label for="password">密码：</label>
 								<form:password  class="form-control"  path="password" placeholder="请输入密码" />
 							</div>
 							<input type="submit" class="btn btn-primary" />

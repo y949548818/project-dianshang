@@ -3,6 +3,7 @@ package com.ds.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +21,8 @@ import com.ds.service.UserInfoService;
  *
  */
 @Controller
-@RequestMapping(value="/test")
-public class Test2Controller {
+@RequestMapping(value="/demo")
+public class DemoController {
 
 	@Autowired
 	UserInfoService userInfoService;
@@ -32,6 +33,30 @@ public class Test2Controller {
 		
 		return "this is test";
 	}
+	
+	@RequestMapping(value="/login")
+	public void doLogin(PrintWriter writer,HttpSession session,String username,String password){
+		if("admin".equals(username)&&"admin".equals(password)){
+			session.setAttribute("user", "admin");
+			writer.write("success");
+			
+		}
+		else{
+			writer.write("error");
+		}
+	}
+	@RequestMapping(value="/home")
+	public void doHome(PrintWriter writer,HttpSession session){
+		String user=(String) session.getAttribute("user");
+		System.out.println(user);
+		if(user!=null&&!("".equals(user))){
+			writer.write("welcome "+user);
+		}
+		else{
+			writer.write("please login");
+		}
+	}
+	
 	@RequestMapping(value="/chinese",method=RequestMethod.GET)
 	public void chinese(PrintWriter writer) throws IOException{
 //			request.setCharacterEncoding("utf-8");

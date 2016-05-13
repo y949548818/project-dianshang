@@ -27,11 +27,11 @@ public class PostController {
 	PostServiceBean postService;
 
 
-	//	@RequestMapping("/publish")
-	//	public String publish(){
-	//		return "publish";
-	//	}
-	@RequestMapping(value="/publish",method=RequestMethod.POST,produces ="application/json;charset=UTF-8")
+	@RequestMapping(value="/publish",method=RequestMethod.GET)
+	public String publish(){
+		return "publishPost";
+	}
+	@RequestMapping(value="/publish",method=RequestMethod.POST)
 	public void doPublish(@RequestParam(name="title",required=false,defaultValue="")String title,
 			@RequestParam(name="postAdmin",required=false,defaultValue="-1")int postAdmin,
 			@RequestParam(name="content",required=false,defaultValue="")String content,
