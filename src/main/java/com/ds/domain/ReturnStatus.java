@@ -1,5 +1,8 @@
 package com.ds.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 返回的实体对象
  * @author qq245521957
@@ -18,7 +21,7 @@ public class ReturnStatus {
 	/**
 	 * 原因
 	 */
-	private String reason;
+	private List<String> reasons;
 	/**
 	 * 成功
 	 */
@@ -28,11 +31,32 @@ public class ReturnStatus {
 	 */
 	public final static int ERROR=2;
 	
+	
+	public ReturnStatus() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public String getResult() {
 		return result;
 	}
 	public void setResult(String result) {
 		this.result = result;
+	}
+	public void setReasons(List<String> reason) {
+		this.reasons = reason;
+	}
+	
+	public List<String> getReasons() {
+		return reasons;
+	}
+	public void addReason(String reason) {
+		if(this.reasons!=null){
+			this.reasons.add(reason);
+		}
+		else{
+			this.reasons=new ArrayList<>();
+			this.reasons.add(reason);
+		}
 	}
 	public int getResultKey() {
 		return resultKey;
@@ -46,12 +70,6 @@ public class ReturnStatus {
 			result="error";
 		}
 		
-	}
-	public String getReason() {
-		return reason;
-	}
-	public void setReason(String reason) {
-		this.reason = reason;
 	}
 	
 }

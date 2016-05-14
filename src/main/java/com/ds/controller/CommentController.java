@@ -33,7 +33,7 @@ public class CommentController {
 	{
 		ReturnStatus status=new ReturnStatus();
 		if("".equals(content)||userId==-1||postId==-1){
-			status.setReason("������ȫ");
+			status.addReason("������ȫ");
 			status.setResultKey(ReturnStatus.ERROR);
 			writer.write(JSON.toJSONString(status));
 		}

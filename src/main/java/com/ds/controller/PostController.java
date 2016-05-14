@@ -2,7 +2,6 @@ package com.ds.controller;
 
 import java.io.PrintWriter;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +41,7 @@ public class PostController {
 		//		System.out.println("postAdmin:" + postAdmin);
 		//		System.out.println("content:" + content);
 		if("".equals(title)||postAdmin==-1||"".equals(content)){
-			status.setReason("参数不全");
+			status.addReason("参数不全");
 			status.setResultKey(ReturnStatus.ERROR);
 			writer.write(JSON.toJSONString(status));
 			return;

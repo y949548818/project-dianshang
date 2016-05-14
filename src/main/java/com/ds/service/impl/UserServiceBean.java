@@ -47,7 +47,7 @@ public class UserServiceBean  implements UserInfoService,UserLoginService,UserRe
 	@Override
 	public User getUserByUserName(String userName) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.selectByUserName(userName);
 	}
 
 	@Override
