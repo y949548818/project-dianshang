@@ -1,8 +1,5 @@
 package com.ds.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -13,7 +10,6 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.ds.dao.UserDao;
 import com.ds.domain.User;
@@ -29,7 +25,9 @@ public class LoginController {
 		return "login";
 	}
 	@RequestMapping(value="login",method=RequestMethod.POST)
-	public String doLogin(@Valid @ModelAttribute("user") User user,BindingResult result,HttpSession session){
+	public String doLogin(@Valid @ModelAttribute("user") User user,
+			BindingResult result,
+			HttpSession session){
 		
 		if(result.getErrorCount()>0){
 			return "login";
