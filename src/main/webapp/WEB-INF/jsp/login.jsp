@@ -8,10 +8,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户登录</title>
-<%@ include file="/include/header.jsp"%>
+<%@ include file="/WEB-INF/include/header.jsp"%>
 </head>
 <body>
-	<%@ include file="/include/nav.jsp"%>
+	<%@ include file="/WEB-INF/include/nav.jsp"%>
 	<%-- 输出所有的信息
 	<br />
 	<%

@@ -5,10 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<%@ include file="/include/header.jsp"%>
+<%@ include file="/WEB-INF/include/header.jsp"%>
 </head>
 <body>
-<%@ include file="/include/nav.jsp" %>
+<%@ include file="/WEB-INF/include/nav.jsp" %>
 <div class="container">
 	<div class="jumbotron">
 		<h1>welcome to my web</h1>

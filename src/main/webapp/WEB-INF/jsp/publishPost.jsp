@@ -5,10 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>发布帖子</title>
-<%@ include file="/include/header.jsp"%>
+<%@ include file="/WEB-INF/include/header.jsp"%>
 </head>
 <body>
-	<%@ include file="/include/nav.jsp"%>
+	<%@ include file="/WEB-INF/include/nav.jsp"%>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
