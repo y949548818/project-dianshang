@@ -9,13 +9,14 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/include/nav.jsp" %>
+
 <div class="container">
 	<div class="jumbotron">
 		<h1>welcome to my web</h1>
 		<p>这是一个网站</p>
 		<p>
-			<a class="btn btn-primary" href='<c:url value="/login" />'>登录</a>
-			<a class="btn btn-lg" >注册</a>
+			<a class="btn btn-primary" href='<c:url value="/user/login" />'>登录</a>
+			<a class="btn btn-lg" href='<c:url value="/user/regist" />'>注册</a>
 		</p>
 	</div>
 </div>

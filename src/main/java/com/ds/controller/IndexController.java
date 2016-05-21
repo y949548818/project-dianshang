@@ -17,7 +17,7 @@ public class IndexController {
 //	@RequestMapping(value={"/","/abc","/index.jsp"},method=RequestMethod.GET)
 	@RequestMapping(value = {"/index.do","/index.html","/index","/"})
 	public String index(){
-		System.out.println("index have a connection");
+
 		return "index";
 	}
 	@Autowired

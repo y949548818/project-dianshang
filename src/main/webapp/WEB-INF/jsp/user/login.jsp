@@ -32,7 +32,7 @@
 
 					<div class="panel-body">
 
-						<form:form action='/project-dianshang/login' role="form"
+						<form:form action='/project-dianshang/user/login' role="form"
 							method="post" modelAttribute="user">
 							<c:if test="${!empty error}">
 								<p>${error}</p>

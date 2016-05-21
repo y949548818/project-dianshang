@@ -15,14 +15,15 @@ import com.ds.domain.User;
 import com.ds.service.impl.UserServiceBean;
 
 @Controller
-public class LoginController {
+@RequestMapping("/user")
+public class UserController {
 
 	@Autowired
 	UserServiceBean userService;
 	
 	@RequestMapping(value="login",method=RequestMethod.GET)
 	public String login(@ModelAttribute("user") User user){
-		return "login";
+		return "user/login";
 	}
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public String doLogin(@Valid @ModelAttribute("user") User user,
@@ -30,7 +31,7 @@ public class LoginController {
 			HttpSession session){
 		
 		if(result.getErrorCount()>0){
-			return "login";
+			return "user/login";
 		}
 		User res=userService.getUserByUserName(user.getUsername());
 		if(res!=null&&res.getPassword().equals(user.getPassword())){
@@ -40,7 +41,7 @@ public class LoginController {
 		}
 		else{
 			result.addError(new ObjectError("login", "用户名或密码错误"));
-			return "login";
+			return "user/login";
 		}
 
 	}
