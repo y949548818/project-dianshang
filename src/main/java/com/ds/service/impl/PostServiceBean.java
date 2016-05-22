@@ -43,7 +43,7 @@ public class PostServiceBean implements PostInfoService,PostPublishService,PostS
 	@Override
 	public Page<Post> getPosts(int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
-		return null;
+		return postDao.page(pageNo, pageSize);
 	}
 
 	

@@ -11,6 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ds.dao.CommentDao;
 import com.ds.domain.Comment;
+import com.ds.domain.Page;
+import com.ds.domain.Post;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/springmvc-servlet.xml")
@@ -20,45 +22,45 @@ public class CommentDaoBeanTest {
 	CommentDao commentDao;
 	
 	/**
-	 * ²âÊÔinsert
+	 * ï¿½ï¿½ï¿½ï¿½insert
 	 */
 	@Test
 	public void test1(){
 		Comment comment=new Comment();
-		comment.setContent("µÚÒ»¸öÆÀÂÛ");
+		comment.setContent("ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		comment.setDate(new Date(new java.util.Date().getTime()));
 		comment.setPostId(11);
 		comment.setUserId(11);
 		int count=commentDao.insert(comment);
-		System.out.println(String.format("ÐÞ¸ÄÁË%d¼ÇÂ¼£¬commentµÄcommentIdÎª%d", count,comment.getCommentId()));
+		System.out.println(String.format("ï¿½Þ¸ï¿½ï¿½ï¿½%dï¿½ï¿½Â¼ï¿½ï¿½commentï¿½ï¿½commentIdÎª%d", count,comment.getCommentId()));
 	}
 	
 	/**
-	 * ²âÊÔupdate,selectById
+	 * ï¿½ï¿½ï¿½ï¿½update,selectById
 	 */
 	@Test
 	public void test2(){
 		Comment comment=commentDao.selectById(3);
 		System.out.println(comment.toString());
-		comment.setContent("ÕâÊÇÐÞ¸ÄºóµÄÆÀÂÛ");
+		comment.setContent("ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Äºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		int count=commentDao.update(3, comment);
 		System.out.println(commentDao.selectById(3).getContent());
-		System.out.println(String.format("Ó°ÏìÁË%dÐÐ", count));
+		System.out.println(String.format("Ó°ï¿½ï¿½ï¿½ï¿½%dï¿½ï¿½", count));
 	}
 	
 	/**
-	 * ²âÊÔdelete,selectById
+	 * ï¿½ï¿½ï¿½ï¿½delete,selectById
 	 */
 	@Test
 	public void test3(){
 		System.out.println(commentDao.selectById(6).toString());
 		int count=commentDao.delete(6);
-		System.out.println("É¾³ýÁË"+count+"ÐÐ");
+		System.out.println("É¾ï¿½ï¿½ï¿½ï¿½"+count+"ï¿½ï¿½");
 		System.out.println(commentDao.selectById(6)==null?"is null":"not null");
 	}
 	
 	/**
-	 * ²âÊÔselectAll
+	 * ï¿½ï¿½ï¿½ï¿½selectAll
 	 */
 	@Test
 	public void test4(){
@@ -66,5 +68,13 @@ public class CommentDaoBeanTest {
 		for (Comment comment : lists) {
 			System.out.println(comment.toString());
 		}
+	}
+	/**
+	 * æµ‹è¯•åˆ†é¡µæŸ¥è¯¢
+	 */
+	@Test
+	public void test6(){
+		Page<Comment> page=commentDao.page(1, 10);
+		System.out.println(page.getResult());
 	}
 }

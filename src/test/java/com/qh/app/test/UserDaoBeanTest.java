@@ -12,12 +12,14 @@ import org.springframework.util.Assert;
 
 import com.ds.dao.CommentDao;
 import com.ds.dao.UserDao;
+import com.ds.domain.Comment;
+import com.ds.domain.Page;
 import com.ds.domain.User;
 import com.ds.service.UserInfoService;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
 @ContextConfiguration("file:src/main/webapp/WEB-INF/springmvc-servlet.xml") 
-public class MyTest {
+public class UserDaoBeanTest {
 
 	@Autowired
 	UserDao userDao;
@@ -67,5 +69,12 @@ public class MyTest {
 		Timestamp time=new Timestamp(date.getTime());
 		System.out.println(time);
 	}
-	
+	/**
+	 * 测试分页查询
+	 */
+	@Test
+	public void test6(){
+		Page<User> page=userDao.page(1, 10);
+		System.out.println(page.getResult());
+	}
 }

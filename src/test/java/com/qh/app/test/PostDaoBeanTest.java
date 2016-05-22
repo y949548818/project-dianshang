@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ds.dao.PostDao;
+import com.ds.domain.Page;
 import com.ds.domain.Post;
 
 
@@ -79,5 +80,12 @@ public class PostDaoBeanTest {
 		if(posts!=null)
 		System.out.println(posts);
 	}
-	
+	/**
+	 * 测试分页查询
+	 */
+	@Test
+	public void test6(){
+		Page<Post> page=postDao.page(1, 10);
+		System.out.println(page.getResult());
+	}
 }

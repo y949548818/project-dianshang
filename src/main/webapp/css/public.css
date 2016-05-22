@@ -1,0 +1,23 @@
+.label-green{
+    background: #80bd01;
+    padding: 2px 4px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    margin-left: 5px;
+
+}
+.label-gray{
+
+}
+.header-icon{
+	width:30px;
+	height:30px;
+}
+.header-icon-small{
+	width:18px;
+	height:18px;
+}

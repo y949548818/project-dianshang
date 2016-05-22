@@ -31,7 +31,7 @@ public class MyExceptionHandler implements HandlerExceptionResolver{
 	public ModelAndView handleUnlogin(UnloginException ex,
 			HttpServletRequest request, HttpServletResponse response, Object handle){
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("redirect:/login");
+		mav.setViewName("redirect:/user/login");
 		return mav;
 	}
 

@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +29,11 @@ public class PostController {
 
 	@RequestMapping(value="/publish",method=RequestMethod.GET)
 	public String publish(){
+		return "publishPost";
+	}
+	@RequestMapping(value="/show/{post_id}",method=RequestMethod.GET)
+	public String show(@PathVariable int post_id){
+		System.out.println(post_id);
 		return "publishPost";
 	}
 	@RequestMapping(value="/publish",method=RequestMethod.POST)

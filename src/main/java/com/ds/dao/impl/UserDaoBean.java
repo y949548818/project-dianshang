@@ -149,9 +149,9 @@ public class UserDaoBean extends BaseDao implements UserDao{
 	private static final String SQL_SELECT = "SELECT * FROM tb_user";
 
 	@Override
-	public Page<User> page(int pageNo, int pageSize, Object[] params) {
+	public Page<User> page(int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
-		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,params,  new BeanPropertyRowMapper<User>(User.class));
+		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,new Object[]{},  new BeanPropertyRowMapper<User>(User.class));
 	}
 
 }

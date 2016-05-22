@@ -37,6 +37,8 @@ public class Page<T> {
 		this.data = data;
 	}
 
+
+
 	/**
 	 * 取总记录数.
 	 */
@@ -61,19 +63,31 @@ public class Page<T> {
 		return pageSize;
 	}
 
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
 	/**
 	 * 取当前页中的记录.
 	 */
 	public List<T> getResult() {
 		return data;
 	}
+	public List<T> getData() {
+		return data;
+	}
 
+	public void setData(List<T> data) {
+		this.data = data;
+	}
 	/**
 	 * 取该页当前页码,页码从1开始.
 	 */
 	public long getCurrentPageNo() {
 		return start / pageSize + 1;
 	}
+
+
 
 	/**
 	 * 该页是否有下一页.
@@ -108,4 +122,11 @@ public class Page<T> {
 	public static int getStartOfPage(int pageNo, int pageSize) {
 		return (pageNo - 1) * pageSize;
 	}
+
+	@Override
+	public String toString() {
+		return "Page [pageSize=" + pageSize + ", start=" + start + ", data=" + data + ", totalCount=" + totalCount
+				+ "]";
+	}
+	
 }

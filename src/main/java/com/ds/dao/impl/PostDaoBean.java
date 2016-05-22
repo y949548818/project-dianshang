@@ -131,9 +131,9 @@ public class PostDaoBean extends BaseDao implements PostDao {
 	private static final String SQL_SELECT = "SELECT * FROM tb_post";
 	
 	@Override
-	public Page<Post> page(int pageNo, int pageSize,Object[] params) {
+	public Page<Post> page(int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
-		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,params,  new BeanPropertyRowMapper<User>(User.class));
+		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,new Object[]{},  new BeanPropertyRowMapper<Post>(Post.class));
 	}
 
 }

@@ -120,9 +120,9 @@ public class CommentDaoBean extends BaseDao implements CommentDao{
 	private static final String SQL_COUNT = "SELECT count(*) FROM tb_comment";
 	private static final String SQL_SELECT = "SELECT * FROM tb_comment";
 	@Override
-	public Page<Comment> page(int pageNo, int pageSize, Object[] params) {
+	public Page<Comment> page(int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
-		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,params,  new BeanPropertyRowMapper<User>(User.class));
+		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,new Object[]{},  new BeanPropertyRowMapper<Comment>(Comment.class));
 	}
 
 }

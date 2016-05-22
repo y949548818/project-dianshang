@@ -63,5 +63,5 @@ public interface IDao<T> {
 	 * @param pageSize 每页的数量
 	 * @return
 	 */
-	Page<T> page(int pageNo, int pageSize,Object[] params);
+	Page<T> page(int pageNo, int pageSize);
 }

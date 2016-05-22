@@ -46,7 +46,9 @@ public abstract class BaseDao<T> {
 		newParams[newParams.length - 1] = pageSize;
 
 		List<T> list = jdbcTemplate.query(sql, newParams, rowMapper);
-
+//		System.out.println("list is "+list);
+//		System.out.println("params is "+newParams);
+//		System.out.println("sql is"+sql);
 		return new Page<T>(startIndex, totalCount, pageSize, list);
 	}
 }

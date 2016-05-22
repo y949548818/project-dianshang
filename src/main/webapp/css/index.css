@@ -1,0 +1,13 @@
+
+.reply-time{
+	text-align: right;
+    min-width: 50px;
+    display: inline-block;
+    white-space: nowrap;
+    color: #778087;
+    font-size: 11px;
+}
+.topic-title{
+	margin-left: 10px;
+	color: #333;
+}
