@@ -7,7 +7,7 @@ import com.ds.domain.Comment;
  * @author hgg
  *
  */
-public interface CommentDao  extends BaseDao<Comment>{
+public interface CommentDao  extends IDao<Comment>{
 
 	
 	

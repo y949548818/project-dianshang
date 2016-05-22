@@ -18,12 +18,13 @@ import org.springframework.jdbc.support.KeyHolder;
 
 import com.ds.dao.CommentDao;
 import com.ds.domain.Comment;
+import com.ds.domain.Page;
+import com.ds.domain.User;
 import com.mysql.jdbc.Statement;
 
-public class CommentDaoBean implements CommentDao{
+public class CommentDaoBean extends BaseDao implements CommentDao{
 
-	@Autowired
-	JdbcTemplate jdbcTemplate;
+
 	
 	@Override
 	public Comment selectById(int commentId) {
@@ -115,6 +116,13 @@ public class CommentDaoBean implements CommentDao{
 		String sql="delete from tb_comment where commentId=?";
 		Object[] params=new Object[]{id};
 		return jdbcTemplate.update(sql, params);
+	}
+	private static final String SQL_COUNT = "SELECT count(*) FROM tb_comment";
+	private static final String SQL_SELECT = "SELECT * FROM tb_comment";
+	@Override
+	public Page<Comment> page(int pageNo, int pageSize, Object[] params) {
+		// TODO Auto-generated method stub
+		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,params,  new BeanPropertyRowMapper<User>(User.class));
 	}
 
 }

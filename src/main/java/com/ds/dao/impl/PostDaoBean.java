@@ -7,23 +7,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import com.ds.dao.PostDao;
+import com.ds.domain.Page;
 import com.ds.domain.Post;
+import com.ds.domain.User;
 import com.mysql.jdbc.Statement;
 
-public class PostDaoBean implements PostDao {
+public class PostDaoBean extends BaseDao implements PostDao {
 
-	@Autowired
-	JdbcTemplate jdbcTemplate;
 
 	
 	@Override
@@ -128,6 +126,14 @@ public class PostDaoBean implements PostDao {
 		Object[] params=new Object[]{id};
 
 		return jdbcTemplate.update(sql,params);
+	}
+	private static final String SQL_COUNT = "SELECT count(*) FROM tb_post";
+	private static final String SQL_SELECT = "SELECT * FROM tb_post";
+	
+	@Override
+	public Page<Post> page(int pageNo, int pageSize,Object[] params) {
+		// TODO Auto-generated method stub
+		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,params,  new BeanPropertyRowMapper<User>(User.class));
 	}
 
 }

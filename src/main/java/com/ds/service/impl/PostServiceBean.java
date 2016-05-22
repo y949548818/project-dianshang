@@ -3,16 +3,18 @@ package com.ds.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ds.dao.PostDao;
+import com.ds.domain.Page;
 import com.ds.domain.Post;
 import com.ds.service.PostInfoService;
 import com.ds.service.PostPublishService;
+import com.ds.service.PostSelectService;
 
 /**
  * 
  * @author qq245521957
  *
  */
-public class PostServiceBean implements PostInfoService,PostPublishService{
+public class PostServiceBean implements PostInfoService,PostPublishService,PostSelectService{
 
 	
 	@Autowired
@@ -36,6 +38,12 @@ public class PostServiceBean implements PostInfoService,PostPublishService{
 		// TODO Auto-generated method stub
 		Post post=postDao.selectById(id);
 		return post.getTitle();
+	}
+
+	@Override
+	public Page<Post> getPosts(int pageNo, int pageSize) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

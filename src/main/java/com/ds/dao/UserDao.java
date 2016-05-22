@@ -3,7 +3,7 @@ package com.ds.dao;
 
 import com.ds.domain.User;
 
-public interface UserDao extends BaseDao<User> {
+public interface UserDao extends IDao<User> {
 
 
 	/**

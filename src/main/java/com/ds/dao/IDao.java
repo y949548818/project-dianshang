@@ -2,13 +2,15 @@ package com.ds.dao;
 
 import java.util.List;
 
+import com.ds.domain.Page;
+
 
 /**
  * Dao的基础接口
  * @author hgg
  *
  */
-public interface BaseDao<T> {
+public interface IDao<T> {
 
 	/**
 	 * 根据指定的Id查照记录
@@ -54,4 +56,12 @@ public interface BaseDao<T> {
 	 * @return 影响的行数
 	 */
 	int delete(int id);
+	/**
+	 * 
+	 * 返回一个page对象
+	 * @param pageNo 第几页
+	 * @param pageSize 每页的数量
+	 * @return
+	 */
+	Page<T> page(int pageNo, int pageSize,Object[] params);
 }

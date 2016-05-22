@@ -19,12 +19,11 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import com.ds.dao.UserDao;
+import com.ds.domain.Page;
 import com.ds.domain.User;
 
-public class UserDaoBean implements UserDao{
+public class UserDaoBean extends BaseDao implements UserDao{
 
-	@Autowired
-	JdbcTemplate jdbcTemplate;
 
 
 	@Override
@@ -144,6 +143,15 @@ public class UserDaoBean implements UserDao{
 				return users;
 			}
 		});
+	}
+
+	private static final String SQL_COUNT = "SELECT count(*) FROM tb_user";
+	private static final String SQL_SELECT = "SELECT * FROM tb_user";
+
+	@Override
+	public Page<User> page(int pageNo, int pageSize, Object[] params) {
+		// TODO Auto-generated method stub
+		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,params,  new BeanPropertyRowMapper<User>(User.class));
 	}
 
 }
