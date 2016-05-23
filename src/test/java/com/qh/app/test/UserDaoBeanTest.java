@@ -38,7 +38,7 @@ public class UserDaoBeanTest {
 	 */
 	@Test
 	public void test2(){
-		User user=userInfoService.getUserByUserId(1);
+		User user=userInfoService.getUserByUserId(2);
 //		User user=userDao.selectById(1);
 		System.out.println(user);
 	}
@@ -76,5 +76,45 @@ public class UserDaoBeanTest {
 	public void test6(){
 		Page<User> page=userDao.page(1, 10);
 		System.out.println(page.getResult());
+	}
+	/**
+	 * 测试selectByName
+	 */
+	@Test
+	public void test7(){
+		User user=userDao.selectByUserName("admin");
+		System.out.println(user);
+	}
+	/**
+	 * 测试insert
+	 */
+	@Test
+	public void test8(){
+		User user=new User();
+		user.setHeaderPath("/123.jpg");
+		user.setLastIp("127.0.0.1");
+		user.setLastTime(new Timestamp(new Date().getTime()));
+		user.setPassword("admin2");
+		user.setUsername("admin2");
+		userDao.insert(user);
+		System.out.println(user);
+	}
+	/**
+	 * 测试update
+	 */
+	@Test
+	public void test9(){
+		User user=userDao.selectByUserName("admin2");
+		user.setPassword("admin3");
+		userDao.update(user.getUserId(), user);
+		System.out.println(user);
+	}
+	/**
+	 * 测试delete
+	 */
+	@Test
+	public void test10(){
+
+		userDao.delete(3);
 	}
 }

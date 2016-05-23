@@ -30,9 +30,11 @@ public class PostDaoBeanTest {
 	public void test1(){
 		Post post=new Post();
 		post.setTitle("这是第二22个帖子");
-		post.setAuthor(2);
+		post.setUserId(2);
 		post.setContent("这是内容22");
 		post.setPublishTime(new Timestamp(new Date().getTime()) );
+		post.setType(1);
+		
 		int count=postDao.insert(post);
 		System.out.println(String.format("修改了%d条记录，post的postId为%d",count,post.getPostId() ));
 	}
@@ -41,12 +43,10 @@ public class PostDaoBeanTest {
 	 */
 	@Test
 	public void test2(){
-		Post post=new Post();
-		post.setPostId(1);
+		Post post=postDao.selectById(2);
 		post.setTitle("这是修改后的帖子2");
 		post.setContent("这是修改后的内容");
 		int count=postDao.update(post.getPostId(), post);
-		System.out.println(String.format("修改了%d条记录，post的postId为%d",count,post.getPostId() ));
 		System.out.println(post);
 	}
 	/**
@@ -56,7 +56,7 @@ public class PostDaoBeanTest {
 	public void test3(){
 		
 	
-		int count=postDao.delete(1);
+		int count=postDao.delete(2);
 		if(count>0)
 		System.out.println("删除成功");
 	}
@@ -65,7 +65,7 @@ public class PostDaoBeanTest {
 	 */
 	@Test
 	public void test4(){
-		Post post=postDao.selectById(10);
+		Post post=postDao.selectById(2);
 	
 		if(post!=null)
 		System.out.println(post);

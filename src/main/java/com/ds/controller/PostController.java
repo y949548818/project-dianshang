@@ -61,7 +61,7 @@ public class PostController {
 		}
 		Post post=new Post();
 		post.setTitle(title);
-		post.setAuthor(postAdmin);
+		post.setUserId(postAdmin);
 		post.setContent(content);
 		if(postService.publish(post)){
 			status.setResultKey(ReturnStatus.SUCCESS);

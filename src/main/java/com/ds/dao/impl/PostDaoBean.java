@@ -27,7 +27,7 @@ public class PostDaoBean extends BaseDao implements PostDao {
 	@Override
 	public Post selectById(int postId) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT * FROM tb_post WHERE postId = ?";
+		String sql = "SELECT * FROM tb_post WHERE post_id = ?";
 		Object[] params=new Object[]{postId};
 		//return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(), params);
 		List<Post> lists= jdbcTemplate.query(sql, params, new BeanPropertyRowMapper<Post>(Post.class));
@@ -42,7 +42,7 @@ public class PostDaoBean extends BaseDao implements PostDao {
 	@Override
 	public List<Post> selectAll() {
 		// TODO Auto-generated method stub
-		final String sql="SELECT * FROM tb_post ORDER BY postId ASC";
+		final String sql="SELECT * FROM tb_post ORDER BY post_id ASC";
 		
 		
 		return jdbcTemplate.query(sql,new ResultSetExtractor<List<Post>>(){
@@ -54,11 +54,14 @@ public class PostDaoBean extends BaseDao implements PostDao {
 				List<Post>posts=new ArrayList<Post>();
 				while(rs.next()){
 					Post post=new Post();
-					post.setPostId(rs.getInt("postId"));
+					post.setPostId(rs.getInt("post_id"));
 					post.setTitle(rs.getString("title"));
-					post.setAuthor(rs.getInt("author"));
+					post.setUserId(rs.getInt("user_id"));
 					post.setContent(rs.getString("content"));
-					post.setPublishTime(rs.getTimestamp("publishTime"));
+					post.setPublishTime(rs.getTimestamp("publish_time"));
+					post.setType(rs.getInt("type"));
+					post.setReply_count(rs.getInt("reply_count"));
+					post.setClick_count(rs.getInt("click_count"));
 					posts.add(post);
 				}
 				return posts;
@@ -69,14 +72,17 @@ public class PostDaoBean extends BaseDao implements PostDao {
 	@Override
 	public int insert(Post obj) {
 		// TODO Auto-generated method stub
-		final String sql="insert into tb_post(title,author,content,publishTime) values(?,?,?,?)";
+		final String sql="insert into tb_post(title,user_id,content,publish_time,type,reply_count,click_count) values(?,?,?,?,?,?,?)";
 		final Object[] params=new Object[]{
 				obj.getTitle(),
-				obj.getAuthor(),
+				obj.getUserId(),
 				obj.getContent(),
-				obj.getPublishTime()
+				obj.getPublishTime(),
+				obj.getType(),
+				obj.getReply_count(),
+				obj.getClick_count()
 				
-				};
+			};
 		//		return jdbcTemplate.update(sql, params);
 		KeyHolder keyHolder=new GeneratedKeyHolder();
 		int rc=jdbcTemplate.update(new PreparedStatementCreator() {
@@ -107,14 +113,25 @@ public class PostDaoBean extends BaseDao implements PostDao {
 		String sql=""
 				+ "update tb_post "
 				+ "set "
+				+ " title=?, "
+				+ " user_id=?, "
 				+ " content=?, "
-				+ " title=? "
-				+ "where "
-				+ " postId=?";
+				+ " publish_time=?, "
+				+ " type=?, "
+				+ " reply_count=?, "
+				+ " click_count=? "
+				+ " where "
+				+ " post_id=? ";
 		Object[] params=new Object[]{
-				obj.getContent(),
 				obj.getTitle(),
-				id};
+				obj.getUserId(),
+				obj.getContent(),
+				obj.getPublishTime(),
+				obj.getType(),
+				obj.getReply_count(),
+				obj.getClick_count(),
+				id
+		};
 		return jdbcTemplate.update(sql,params);
 	}
 
@@ -122,7 +139,7 @@ public class PostDaoBean extends BaseDao implements PostDao {
 	public int delete(int id) {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
-		String sql = "DELETE FROM tb_post WHERE postId = ?";
+		String sql = "DELETE FROM tb_post WHERE post_id = ?";
 		Object[] params=new Object[]{id};
 
 		return jdbcTemplate.update(sql,params);

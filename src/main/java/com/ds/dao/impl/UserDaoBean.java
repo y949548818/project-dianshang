@@ -35,10 +35,12 @@ public class UserDaoBean extends BaseDao implements UserDao{
 			@Override
 			public void processRow(ResultSet rs) throws SQLException {
 				// TODO Auto-generated method stub
-				user.setUserId(rs.getInt("userId"));
+				user.setUserId(rs.getInt("user_id"));
 				user.setUsername(rs.getString("username"));
-				user.setLastIp(rs.getString("lastIp"));
+				user.setLastIp(rs.getString("last_ip"));
 				user.setPassword(rs.getString("password"));
+				user.setHeaderPath(rs.getString("header_path"));
+				user.setLastTime(rs.getTimestamp("last_time"));
 			}
 		});
 		//		return user.getUserId() != null?user:null;
@@ -50,10 +52,15 @@ public class UserDaoBean extends BaseDao implements UserDao{
 
 	@Override
 	public int insert(User user) {
-		final String sql="insert into tb_user(username,credits,password,lastVisit,lastIp) values(?,?,?,?,?)";
+		final String sql="insert into tb_user(username,password,last_time,last_ip,header_path) values(?,?,?,?,?)";
 		final Object[] params=new Object[]{
 				user.getUsername(),
-				user.getLastIp()};
+				user.getPassword(),
+				user.getLastTime(),
+				user.getLastIp(),
+				user.getHeaderPath()
+				
+		};
 		//		return jdbcTemplate.update(sql, params);
 		KeyHolder keyHolder=new GeneratedKeyHolder();
 		int rc=jdbcTemplate.update(new PreparedStatementCreator() {
@@ -81,24 +88,30 @@ public class UserDaoBean extends BaseDao implements UserDao{
 		String sql=""
 				+ "update tb_user "
 				+ "set "
-				+ " userId=?, "
+				+ " user_id=?, "
 				+ " username=?, "
 				+ " password=?, "
-				+ " credits=?, "
-				+ " lastIp=?, "
+				+ " header_path=?, "
+				+ " last_time=?, "
+				+ " last_ip=? "
 				+ "where "
-				+ " userId=?";
+				+ " user_id=? ";
 		Object[] params=new Object[]{
 				user.getUserId(),
 				user.getUsername(),
-				user.getLastIp()};
+				user.getPassword(),
+				user.getHeaderPath(),
+				user.getLastTime(),
+				user.getLastIp(),
+				userId
+			};
 		return jdbcTemplate.update(sql,params);
 	}
 
 	@Override
 	public int delete(int userId) {
 		// TODO Auto-generated method stub
-		String sql = "DELETE FROM tb_user WHERE userId = ?";
+		String sql = "DELETE FROM tb_user WHERE user_id = ?";
 		Object[] params=new Object[]{userId};
 
 		return jdbcTemplate.update(sql,params);
@@ -106,7 +119,7 @@ public class UserDaoBean extends BaseDao implements UserDao{
 
 	@Override
 	public User selectById(int userId) {
-		String sql = "SELECT * FROM tb_user WHERE userId = ?";
+		String sql = "SELECT * FROM tb_user WHERE user_id = ?";
 		Object[] params=new Object[]{userId};
 		//return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(), params);
 		List<User> lists= jdbcTemplate.query(sql, params, new BeanPropertyRowMapper<User>(User.class));
@@ -122,7 +135,7 @@ public class UserDaoBean extends BaseDao implements UserDao{
 	@Override
 	public List<User> selectAll() {
 
-		final String sql="SELECT * FROM tb_user ORDER BY userId ASC";
+		final String sql="SELECT * FROM tb_user ORDER BY user_id ASC";
 		
 		
 		return jdbcTemplate.query(sql,new ResultSetExtractor<List<User>>(){
@@ -134,10 +147,12 @@ public class UserDaoBean extends BaseDao implements UserDao{
 				List<User>users=new ArrayList<User>();
 				while(rs.next()){
 					User user=new User();
-					user.setUserId(rs.getInt("userId"));
+					user.setUserId(rs.getInt("user_id"));
 					user.setUsername(rs.getString("username"));
-					user.setLastIp(rs.getString("lastIp"));
+					user.setLastIp(rs.getString("last_ip"));
 					user.setPassword(rs.getString("password"));
+					user.setHeaderPath(rs.getString("header_path"));
+					user.setLastTime(rs.getTimestamp("last_time"));
 					users.add(user);
 				}
 				return users;

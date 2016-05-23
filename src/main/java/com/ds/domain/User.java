@@ -1,5 +1,7 @@
 package com.ds.domain;
 
+import java.sql.Timestamp;
+
 import javax.validation.constraints.Pattern;
 
 /**
@@ -21,7 +23,14 @@ public class User {
 	 * 用户最后登录的日期
 	 */
 	private String lastIp;
-	
+	/**
+	 * 头像地址
+	 */
+	private String headerPath;
+	/**
+	 * 上一次登录的时间
+	 */
+	private Timestamp lastTime;
 	/**
 	 * 用户的密码。
 	 */
@@ -37,6 +46,13 @@ public class User {
 	public int getUserId() {
 		return userId;
 	}
+	
+	public String getHeaderPath() {
+		return headerPath;
+	}
+	public void setHeaderPath(String headerPath) {
+		this.headerPath = headerPath;
+	}
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
@@ -48,6 +64,12 @@ public class User {
 	}
 
 
+	public Timestamp getLastTime() {
+		return lastTime;
+	}
+	public void setLastTime(Timestamp lastTime) {
+		this.lastTime = lastTime;
+	}
 	public String getPassword() {
 		return password;
 	}
@@ -67,8 +89,8 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", lastIp=" + lastIp + ", password=" + password
-				+ "]";
+		return "User [userId=" + userId + ", username=" + username + ", lastIp=" + lastIp + ", headerPath=" + headerPath
+				+ ", lastTime=" + lastTime + ", password=" + password + "]";
 	}
 	
 }

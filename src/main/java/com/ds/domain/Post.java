@@ -20,7 +20,7 @@ public class Post {
 	/**
 	 * 帖子发布者的id
 	 */
-	private int author;
+	private int userId;
 	/**
 	 * 帖子的内容
 	 */
@@ -29,8 +29,43 @@ public class Post {
 	 * 帖子发布的时间
 	 */
 	private Timestamp publishTime;
+	/**
+	 * 帖子的类型
+	 */
+	private int type;
+	/**
+	 * 回复的数量
+	 */
+	private int reply_count;
+	/**
+	 * 点击的数量
+	 */
+	private int click_count;
 	
-	
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public int getReply_count() {
+		return reply_count;
+	}
+	public void setReply_count(int reply_count) {
+		this.reply_count = reply_count;
+	}
+	public int getClick_count() {
+		return click_count;
+	}
+	public void setClick_count(int click_count) {
+		this.click_count = click_count;
+	}
 	public Timestamp getPublishTime() {
 		return publishTime;
 	}
@@ -52,20 +87,15 @@ public class Post {
 	public int getPostId() {
 		return postId;
 	}
-	public void setPostId(int postId) {
-		this.postId = postId;
-	}
 	
-	public int getAuthor() {
-		return author;
-	}
-	public void setAuthor(int author) {
-		this.author = author;
-	}
 	@Override
 	public String toString() {
-		return "Post [title=" + title + ", postId=" + postId + ", postAdmin=" + author + ", content=" + content
-				+ ", publishTime=" + publishTime + "]";
+		return "Post [title=" + title + ", postId=" + postId + ", userId=" + userId + ", content=" + content
+				+ ", publishTime=" + publishTime + ", type=" + type + ", reply_count=" + reply_count + ", click_count="
+				+ click_count + "]";
+	}
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
 	public Post() {
 		super();
