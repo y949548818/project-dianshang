@@ -76,7 +76,7 @@ public class PostDaoBeanTest {
 	@Test
 	public void test5(){
 		List<Post> posts=postDao.selectAll();
-	
+	  
 		if(posts!=null)
 		System.out.println(posts);
 	}
