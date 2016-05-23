@@ -46,7 +46,7 @@
 	                    <ul class="pagination">
 						  <li><a href="#">&laquo;</a></li>
 						  <c:choose>
-						  	<c:when test="${page.currentPageNo <= 3 }">
+						  	<c:when test="${page.currentPageNo <= 3 }"> 
 								<c:choose>
 						  			<c:when test="${ page.totalPageCount>5}">
 										<c:forEach begin="1" end="5" step="1" var="pageNumber">
