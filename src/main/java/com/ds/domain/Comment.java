@@ -30,6 +30,18 @@ public class Comment {
 	 */
 	private Date date;
 	
+	/**
+	 * 回复的评论id
+	 */
+	private int preCommentId;
+	
+	
+	public int getPreCommentTime() {
+		return preCommentId;
+	}
+	public void setPreCommentTime(int preCommentTime) {
+		this.preCommentId = preCommentTime;
+	}
 	public int getCommentId() {
 		return commentId;
 	}
@@ -63,7 +75,7 @@ public class Comment {
 	@Override
 	public String toString() {
 		return "Comment [CommentId=" + commentId + ", content=" + content + ", userId=" + userId + ", postId=" + postId
-				+ ", Date=" + date.toString() + "]";
+				+ ", Date=" + date.toString() + ", preCommentId=" + preCommentId + "]";
 	}
 	
 }
