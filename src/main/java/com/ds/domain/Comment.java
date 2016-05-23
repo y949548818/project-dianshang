@@ -28,19 +28,19 @@ public class Comment {
 	/**
 	 * 评论发布的日期
 	 */
-	private Date date;
+	private Date date=new Date(new java.util.Date().getTime());
 	
 	/**
-	 * 回复的评论id
+	 * 回复的评论id,默认值0
 	 */
 	private int preCommentId;
 	
 	
-	public int getPreCommentTime() {
+	public int getPreCommentId() {
 		return preCommentId;
 	}
-	public void setPreCommentTime(int preCommentTime) {
-		this.preCommentId = preCommentTime;
+	public void setPreCommentId(int preCommentId) {
+		this.preCommentId = preCommentId;
 	}
 	public int getCommentId() {
 		return commentId;
@@ -72,6 +72,7 @@ public class Comment {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
 	@Override
 	public String toString() {
 		return "Comment [CommentId=" + commentId + ", content=" + content + ", userId=" + userId + ", postId=" + postId
