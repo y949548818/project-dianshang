@@ -27,7 +27,7 @@ public class PostServiceTest {
 	public void test1(){
 		Post post=new Post();
 		post.setTitle("标题");
-		post.setPostAdmin(1);
+		post.setAuthor(1);
 		post.setContent("内容");
 		postPublishService.publish(post);
 	}

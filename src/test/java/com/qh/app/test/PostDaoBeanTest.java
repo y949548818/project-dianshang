@@ -30,7 +30,7 @@ public class PostDaoBeanTest {
 	public void test1(){
 		Post post=new Post();
 		post.setTitle("这是第二22个帖子");
-		post.setPostAdmin(2);
+		post.setAuthor(2);
 		post.setContent("这是内容22");
 		post.setPublishTime(new Timestamp(new Date().getTime()) );
 		int count=postDao.insert(post);

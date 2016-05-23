@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.ds.domain.Post;
@@ -32,9 +33,15 @@ public class PostController {
 		return "publishPost";
 	}
 	@RequestMapping(value="/show/{post_id}",method=RequestMethod.GET)
-	public String show(@PathVariable int post_id){
+	public ModelAndView show(@PathVariable int post_id){
 		System.out.println(post_id);
-		return "publishPost";
+		ModelAndView mav=new ModelAndView("post/show");
+		Post post=new Post();
+		post.setContent("<p>123123</p>"
+				+ "<p>456</p>");
+		post.setTitle("123");
+		mav.addObject("post", post);
+		return mav;
 	}
 	@RequestMapping(value="/publish",method=RequestMethod.POST)
 	public void doPublish(@RequestParam(name="title",required=false,defaultValue="")String title,
@@ -54,7 +61,7 @@ public class PostController {
 		}
 		Post post=new Post();
 		post.setTitle(title);
-		post.setPostAdmin(postAdmin);
+		post.setAuthor(postAdmin);
 		post.setContent(content);
 		if(postService.publish(post)){
 			status.setResultKey(ReturnStatus.SUCCESS);

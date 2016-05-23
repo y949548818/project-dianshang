@@ -16,7 +16,7 @@
 		<div class="jumbotron">
 			<h1>welcome to my web</h1>
 			<p>这是一个网站</p>
-			<p>${page}</p>
+
 			
 			<p>
 				<a class="btn btn-primary" href='<c:url value="/user/login" />'>登录</a>

@@ -14,7 +14,8 @@ public class Page<T> {
 	private List<T> data; // 当前页中存放的记录,类型一般为List
 
 	private long totalCount; // 总记录数
-
+	private int totalPageCount;//总页数
+	private int currentPageNo;//当前的页数
 	/**
 	 * 构造方法，只构造空页.
 	 */

@@ -56,7 +56,7 @@ public class PostDaoBean extends BaseDao implements PostDao {
 					Post post=new Post();
 					post.setPostId(rs.getInt("postId"));
 					post.setTitle(rs.getString("title"));
-					post.setPostAdmin(rs.getInt("postAdmin"));
+					post.setAuthor(rs.getInt("author"));
 					post.setContent(rs.getString("content"));
 					post.setPublishTime(rs.getTimestamp("publishTime"));
 					posts.add(post);
@@ -69,10 +69,10 @@ public class PostDaoBean extends BaseDao implements PostDao {
 	@Override
 	public int insert(Post obj) {
 		// TODO Auto-generated method stub
-		final String sql="insert into tb_post(title,postAdmin,content,publishTime) values(?,?,?,?)";
+		final String sql="insert into tb_post(title,author,content,publishTime) values(?,?,?,?)";
 		final Object[] params=new Object[]{
 				obj.getTitle(),
-				obj.getPostAdmin(),
+				obj.getAuthor(),
 				obj.getContent(),
 				obj.getPublishTime()
 				

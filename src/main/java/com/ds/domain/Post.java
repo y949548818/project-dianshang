@@ -20,7 +20,7 @@ public class Post {
 	/**
 	 * 帖子发布者的id
 	 */
-	private int postAdmin;
+	private int author;
 	/**
 	 * 帖子的内容
 	 */
@@ -55,15 +55,16 @@ public class Post {
 	public void setPostId(int postId) {
 		this.postId = postId;
 	}
-	public int getPostAdmin() {
-		return postAdmin;
+	
+	public int getAuthor() {
+		return author;
 	}
-	public void setPostAdmin(int postAdmin) {
-		this.postAdmin = postAdmin;
+	public void setAuthor(int author) {
+		this.author = author;
 	}
 	@Override
 	public String toString() {
-		return "Post [title=" + title + ", postId=" + postId + ", postAdmin=" + postAdmin + ", content=" + content
+		return "Post [title=" + title + ", postId=" + postId + ", postAdmin=" + author + ", content=" + content
 				+ ", publishTime=" + publishTime + "]";
 	}
 	public Post() {
