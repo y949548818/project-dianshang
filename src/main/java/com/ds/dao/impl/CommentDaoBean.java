@@ -28,7 +28,7 @@ public class CommentDaoBean extends BaseDao implements CommentDao{
 	
 	@Override
 	public Comment selectById(int commentId) {
-		String sql = "SELECT * FROM tb_comment WHERE commentId = ?";
+		String sql = "SELECT * FROM tb_comment WHERE comment_id = ?";
 		Object[] params=new Object[]{commentId};
 		List<Comment> lists= jdbcTemplate.query(sql, params, new BeanPropertyRowMapper<Comment>(Comment.class));
 		if(lists.size()==0){
@@ -49,11 +49,11 @@ public class CommentDaoBean extends BaseDao implements CommentDao{
 				List<Comment>comments=new ArrayList<Comment>();
 				while(rs.next()){
 					Comment comment=new Comment();
-					comment.setCommentId(rs.getInt("commentId"));
+					comment.setCommentId(rs.getInt("comment_id"));
 					comment.setContent(rs.getString("content"));
-					comment.setDate(rs.getDate("date"));
-					comment.setPostId(rs.getInt("postId"));
-					comment.setUserId(rs.getInt("userId"));
+					comment.setDate(rs.getDate("publish_time"));
+					comment.setPostId(rs.getInt("post_id"));
+					comment.setUserId(rs.getInt("user_id"));
 					comments.add(comment);
 				}
 				return comments;
@@ -64,7 +64,7 @@ public class CommentDaoBean extends BaseDao implements CommentDao{
 
 	@Override
 	public int insert(Comment comment) {
-		String sql="insert into tb_comment(content,date,postId,userId) values(?,?,?,?)";
+		String sql="insert into tb_comment(content,publish_time,post_id,user_id) values(?,?,?,?)";
 		Object[] params=new Object[]{
 				comment.getContent(),
 				comment.getDate(),
@@ -96,11 +96,11 @@ public class CommentDaoBean extends BaseDao implements CommentDao{
 				+ "update tb_comment "
 				+ "set "
 				+ " content=?, "
-				+ " date=?, "
-				+ " postId=?, "
-				+ " userId=?"
+				+ " publish_time=?, "
+				+ " post_id=?, "
+				+ " user_id=?"
 				+ " where"
-				+ " commentId=?";
+				+ " comment_id=?";
 		Object[] params=new Object[]{
 				comment.getContent(),
 				comment.getDate(),
@@ -113,7 +113,7 @@ public class CommentDaoBean extends BaseDao implements CommentDao{
 
 	@Override
 	public int delete(int id) {
-		String sql="delete from tb_comment where commentId=?";
+		String sql="delete from tb_comment where comment_id=?";
 		Object[] params=new Object[]{id};
 		return jdbcTemplate.update(sql, params);
 	}

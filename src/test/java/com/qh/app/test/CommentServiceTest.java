@@ -24,12 +24,12 @@ public class CommentServiceTest {
 	CommentInfoService commentInfoService;
 	
 	/*
-	 * ²âÊÔ·¢²¼ÆÀÂÛ
+	 * ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	@Test
 	public void test1(){
 		Comment comment=new Comment();
-		comment.setContent("publish²âÊÔÄÚÈİ");
+		comment.setContent("publishæµ‹è¯•");
 		comment.setDate(new Date(new java.util.Date().getTime()));
 		comment.setPostId(1);
 		comment.setUserId(1);

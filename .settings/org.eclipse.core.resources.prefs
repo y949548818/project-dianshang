@@ -2,10 +2,12 @@ eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/java/com/ds/controller/PostController.java=UTF-8
 encoding//src/main/java/com/ds/dao/IDao.java=UTF-8
+encoding//src/main/java/com/ds/dao/impl=UTF-8
 encoding//src/main/java/com/ds/dao/impl/CommentDaoBean.java=UTF-8
 encoding//src/main/java/com/ds/dao/impl/PostDaoBean.java=UTF-8
 encoding//src/main/java/com/ds/domain/Comment.java=UTF-8
 encoding//src/main/java/com/ds/domain/ReturnStatus.java=UTF-8
+encoding//src/main/java/com/ds/interceptor/LoginInterceptor.java=UTF-8
 encoding//src/main/java/com/ds/service/CommentInfoService.java=UTF-8
 encoding//src/main/java/com/ds/service/CommentPublishService.java=UTF-8
 encoding//src/main/java/com/ds/service/PostInfoService.java=UTF-8
@@ -16,7 +18,12 @@ encoding//src/main/java/com/ds/service/UserRegisterService.java=UTF-8
 encoding//src/main/java/com/ds/service/impl/PostServiceBean.java=UTF-8
 encoding//src/main/webapp/WEB-INF/include/nav.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/index.jsp=UTF-8
+<<<<<<< HEAD
 encoding//src/main/webapp/WEB-INF/jsp/post/show.jsp=UTF-8
+=======
+encoding//src/test/java/com/qh/app/test/CommentDaoBeanTest.java=UTF-8
+encoding//src/test/java/com/qh/app/test/CommentServiceTest.java=UTF-8
+>>>>>>> refs/remotes/origin/project-dianshang
 encoding//src/test/java/com/qh/app/test/PostDaoBeanTest.java=UTF-8
 encoding//src/test/java/com/qh/app/test/PostServiceTest.java=UTF-8
 encoding//src/test/java/com/qh/app/test/UserDaoBeanTest.java=UTF-8

@@ -22,21 +22,21 @@ public class CommentDaoBeanTest {
 	CommentDao commentDao;
 	
 	/**
-	 * ����insert
+	 * 测试insert
 	 */
 	@Test
 	public void test1(){
 		Comment comment=new Comment();
-		comment.setContent("��һ������");
+		comment.setContent("测试content1");
 		comment.setDate(new Date(new java.util.Date().getTime()));
-		comment.setPostId(11);
-		comment.setUserId(11);
+		comment.setPostId(1);
+		comment.setUserId(2);
 		int count=commentDao.insert(comment);
-		System.out.println(String.format("�޸���%d��¼��comment��commentIdΪ%d", count,comment.getCommentId()));
+		System.out.println(String.format("影响%d行,评论id=%d", count,comment.getCommentId()));
 	}
 	
 	/**
-	 * ����update,selectById
+	 * 测试update,selectById
 	 */
 	@Test
 	public void test2(){
@@ -49,7 +49,7 @@ public class CommentDaoBeanTest {
 	}
 	
 	/**
-	 * ����delete,selectById
+	 * 测试delete,selectById
 	 */
 	@Test
 	public void test3(){
@@ -60,7 +60,7 @@ public class CommentDaoBeanTest {
 	}
 	
 	/**
-	 * ����selectAll
+	 * 测试selectAll
 	 */
 	@Test
 	public void test4(){
