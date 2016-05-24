@@ -34,7 +34,6 @@ public class ReturnStatus {
 	
 	public ReturnStatus() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public String getResult() {
 		return result;

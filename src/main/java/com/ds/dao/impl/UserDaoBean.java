@@ -22,19 +22,17 @@ import com.ds.dao.UserDao;
 import com.ds.domain.Page;
 import com.ds.domain.User;
 
-public class UserDaoBean extends BaseDao implements UserDao{
+public class UserDaoBean extends BaseDao<User> implements UserDao{
 
 
 
 	@Override
 	public User selectByUserName(String userName) {
-		// TODO Auto-generated method stub
 		String sql="select * from tb_user where username=?";
 		final User user=new User();
 		jdbcTemplate.query(sql, new Object[]{userName},new RowCallbackHandler(){
 			@Override
 			public void processRow(ResultSet rs) throws SQLException {
-				// TODO Auto-generated method stub
 				user.setUserId(rs.getInt("user_id"));
 				user.setUsername(rs.getString("username"));
 				user.setLastIp(rs.getString("last_ip"));
@@ -110,7 +108,6 @@ public class UserDaoBean extends BaseDao implements UserDao{
 
 	@Override
 	public int delete(int userId) {
-		// TODO Auto-generated method stub
 		String sql = "DELETE FROM tb_user WHERE user_id = ?";
 		Object[] params=new Object[]{userId};
 
@@ -143,7 +140,6 @@ public class UserDaoBean extends BaseDao implements UserDao{
 			@Override
 			public List<User> extractData(ResultSet rs) throws SQLException,
 			DataAccessException {
-				// TODO Auto-generated method stub
 				List<User>users=new ArrayList<User>();
 				while(rs.next()){
 					User user=new User();
@@ -165,7 +161,6 @@ public class UserDaoBean extends BaseDao implements UserDao{
 
 	@Override
 	public Page<User> page(int pageNo, int pageSize) {
-		// TODO Auto-generated method stub
 		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,new Object[]{},  new BeanPropertyRowMapper<User>(User.class));
 	}
 

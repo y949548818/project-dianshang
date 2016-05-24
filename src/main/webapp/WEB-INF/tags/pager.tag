@@ -6,7 +6,7 @@
     <div class="panel-heading">
 
         <button type="button" class="btn btn-link">
-            按钮1
+           ${types}
         </button>
         <button type="button" class="btn btn-link">
             按钮1

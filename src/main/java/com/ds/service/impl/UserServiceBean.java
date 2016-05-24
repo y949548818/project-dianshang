@@ -21,44 +21,40 @@ public class UserServiceBean  implements UserInfoService,UserLoginService,UserRe
 	
 	@Override
 	public void register(User user) {
-		// TODO Auto-generated method stub
-		
+		//TODO 用户注册功能
 	}
 
 	@Override
 	public boolean isUserNameAvailable(String userName) {
-		// TODO Auto-generated method stub
+		//TODO 用户名是否重复
 		return false;
 	}
 
 	@Override
 	public boolean hasMatchUser(String userName, String password) {
-		// TODO Auto-generated method stub
 		User user=userDao.selectByUserName(userName);
 		return user!=null&&user.getPassword().equals(password);
 	}
 
 	@Override
 	public int loginSccess(User user) {
-		// TODO Auto-generated method stub
+		//TODO 是否登录成功
 		return 0;
 	}
 
 	@Override
 	public User getUserByUserName(String userName) {
-		// TODO Auto-generated method stub
 		return userDao.selectByUserName(userName);
 	}
 
 	@Override
 	public User getUserByUserId(int userId) {
-		// TODO Auto-generated method stub
 		return userDao.selectById(userId);
 	}
 
 	@Override
 	public Page<User> getUsers(int pageNo, int pageSize) {
-		// TODO Auto-generated method stub
+		//获取用户列表
 		return null;
 	}
 

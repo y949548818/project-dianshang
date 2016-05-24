@@ -21,7 +21,6 @@ public class TypeServiceBean implements TypeSelectService {
 	
 	@Override
 	public List<Type> selectAll() {
-		// TODO Auto-generated method stub
 		return typeDao.selectAll();
 	}
 

@@ -18,19 +18,32 @@ import com.ds.domain.Page;
 import com.ds.domain.Post;
 import com.ds.domain.User;
 import com.ds.service.impl.PostServiceBean;
+import com.ds.service.impl.TypeServiceBean;
 
 @Controller
 public class IndexController {
 
 	@Autowired
 	PostServiceBean postService;
+	@Autowired
+	TypeServiceBean typeService;
 	@RequestMapping(value = {"/index.do","/index.html","/index","/"},method=RequestMethod.GET)
-	public ModelAndView index(@RequestParam(value="page",defaultValue="1",required=false)int pageNo){
+	public ModelAndView index(@RequestParam(value="page",defaultValue="1",required=false)int pageNo,@RequestParam(value="type",defaultValue="",required=false)String type){
 		ModelAndView mav=new ModelAndView("index");
 		int pageSize=10;
-		Page<Post> page=postService.getPosts(pageNo, pageSize);
-		System.out.println(page);
-		mav.addObject("page",page);
+		//如果type为null,说明是默认的显示类别
+		if(type==null||"".equals(type))
+		{
+			mav.addObject("page",postService.getPosts(pageNo, pageSize));
+			mav.addObject("types",typeService.selectAll());
+		}
+		else{
+			
+		}
+		
+		
+		
+		
 		return mav;
 	}
 	@Autowired

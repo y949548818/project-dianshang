@@ -66,7 +66,6 @@ public class DemoController {
 //		try {
 //			return new String("这是中文".getBytes("ISO-8859-1"),"ISO-8859-1");
 //		} catch (UnsupportedEncodingException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //		return "error";

@@ -17,16 +17,15 @@ import org.springframework.jdbc.support.KeyHolder;
 import com.ds.dao.PostDao;
 import com.ds.domain.Page;
 import com.ds.domain.Post;
-import com.ds.domain.User;
+import com.ds.domain.Type;
 import com.mysql.jdbc.Statement;
 
-public class PostDaoBean extends BaseDao implements PostDao {
+public class PostDaoBean extends BaseDao<Post> implements PostDao {
 
 
 	
 	@Override
 	public Post selectById(int postId) {
-		// TODO Auto-generated method stub
 		String sql = "SELECT * FROM tb_post WHERE post_id = ?";
 		Object[] params=new Object[]{postId};
 		//return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(), params);
@@ -41,7 +40,6 @@ public class PostDaoBean extends BaseDao implements PostDao {
 
 	@Override
 	public List<Post> selectAll() {
-		// TODO Auto-generated method stub
 		final String sql="SELECT * FROM tb_post ORDER BY post_id ASC";
 		
 		
@@ -50,7 +48,6 @@ public class PostDaoBean extends BaseDao implements PostDao {
 			@Override
 			public List<Post> extractData(ResultSet rs) throws SQLException,
 			DataAccessException {
-				// TODO Auto-generated method stub
 				List<Post>posts=new ArrayList<Post>();
 				while(rs.next()){
 					Post post=new Post();
@@ -71,7 +68,6 @@ public class PostDaoBean extends BaseDao implements PostDao {
 
 	@Override
 	public int insert(Post obj) {
-		// TODO Auto-generated method stub
 		final String sql="insert into tb_post(title,user_id,content,publish_time,type,reply_count,click_count) values(?,?,?,?,?,?,?)";
 		final Object[] params=new Object[]{
 				obj.getTitle(),
@@ -90,7 +86,6 @@ public class PostDaoBean extends BaseDao implements PostDao {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con)
 					throws SQLException {
-				// TODO Auto-generated method stub
 				PreparedStatement st=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 				for(int i=1;i<=params.length;i++){
 					st.setObject(i, params[i-1]);
@@ -109,7 +104,6 @@ public class PostDaoBean extends BaseDao implements PostDao {
 	 */
 	@Override
 	public int update(int id, Post obj) {
-		// TODO Auto-generated method stub
 		String sql=""
 				+ "update tb_post "
 				+ "set "
@@ -137,8 +131,6 @@ public class PostDaoBean extends BaseDao implements PostDao {
 
 	@Override
 	public int delete(int id) {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
 		String sql = "DELETE FROM tb_post WHERE post_id = ?";
 		Object[] params=new Object[]{id};
 
@@ -149,7 +141,6 @@ public class PostDaoBean extends BaseDao implements PostDao {
 	
 	@Override
 	public Page<Post> page(int pageNo, int pageSize) {
-		// TODO Auto-generated method stub
 		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,new Object[]{},  new BeanPropertyRowMapper<Post>(Post.class));
 	}
 

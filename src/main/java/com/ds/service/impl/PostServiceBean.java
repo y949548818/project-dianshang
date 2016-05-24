@@ -22,7 +22,6 @@ public class PostServiceBean implements PostInfoService,PostPublishService,PostS
 	
 	@Override
 	public boolean publish(Post post) {
-		// TODO Auto-generated method stub
 		int count=postDao.insert(post);
 		if(count>0){
 //			System.out.println("发布帖子成功");
@@ -35,14 +34,12 @@ public class PostServiceBean implements PostInfoService,PostPublishService,PostS
 
 	@Override
 	public String getPostTitle(int id) {
-		// TODO Auto-generated method stub
 		Post post=postDao.selectById(id);
 		return post.getTitle();
 	}
 
 	@Override
 	public Page<Post> getPosts(int pageNo, int pageSize) {
-		// TODO Auto-generated method stub
 		return postDao.page(pageNo, pageSize);
 	}
 
