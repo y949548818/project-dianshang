@@ -51,7 +51,7 @@ public class CommentDaoBean extends BaseDao implements CommentDao{
 					Comment comment=new Comment();
 					comment.setCommentId(rs.getInt("comment_id"));
 					comment.setContent(rs.getString("content"));
-					comment.setDate(rs.getDate("publish_time"));
+					comment.setDate(rs.getTimestamp("publish_time"));
 					comment.setPostId(rs.getInt("post_id"));
 					comment.setUserId(rs.getInt("user_id"));
 					comments.add(comment);

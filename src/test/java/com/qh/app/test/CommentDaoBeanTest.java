@@ -1,6 +1,7 @@
 package com.qh.app.test;
 
-import java.sql.Date;
+import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.junit.Test;
@@ -12,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ds.dao.CommentDao;
 import com.ds.domain.Comment;
 import com.ds.domain.Page;
-import com.ds.domain.Post;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/springmvc-servlet.xml")
@@ -28,9 +28,10 @@ public class CommentDaoBeanTest {
 	public void test1(){
 		Comment comment=new Comment();
 		comment.setContent("测试content1");
-		comment.setDate(new Date(new java.util.Date().getTime()));
+		comment.setDate(new Timestamp(new Date().getTime()));
 		comment.setPostId(1);
 		comment.setUserId(2);
+		comment.setPreCommentId(0);
 		int count=commentDao.insert(comment);
 		System.out.println(String.format("影响%d行,评论id=%d", count,comment.getCommentId()));
 	}
@@ -42,20 +43,20 @@ public class CommentDaoBeanTest {
 	public void test2(){
 		Comment comment=commentDao.selectById(3);
 		System.out.println(comment.toString());
-		comment.setContent("�����޸ĺ������");
+		comment.setContent("update测试");
 		int count=commentDao.update(3, comment);
 		System.out.println(commentDao.selectById(3).getContent());
-		System.out.println(String.format("Ӱ����%d��", count));
+		System.out.println(String.format("影响%d行,评论id=%d", count,comment.getCommentId()));
 	}
 	
 	/**
-	 * 测试delete,selectById
+	 * 测试delete,selectById啊
 	 */
 	@Test
 	public void test3(){
 		System.out.println(commentDao.selectById(6).toString());
 		int count=commentDao.delete(6);
-		System.out.println("ɾ����"+count+"��");
+		System.out.println("已删除"+count+"行");
 		System.out.println(commentDao.selectById(6)==null?"is null":"not null");
 	}
 	
@@ -69,6 +70,16 @@ public class CommentDaoBeanTest {
 			System.out.println(comment.toString());
 		}
 	}
+	
+	/**
+	 * 测试selectById
+	 */
+	@Test
+	public void test5(){
+		Comment comment=commentDao.selectById(3);
+		System.out.println(comment.toString());
+	}
+	
 	/**
 	 * 测试分页查询
 	 */

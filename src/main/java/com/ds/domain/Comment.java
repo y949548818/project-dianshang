@@ -1,6 +1,7 @@
 package com.ds.domain;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * 这个是评论的实体类
@@ -28,19 +29,19 @@ public class Comment {
 	/**
 	 * 评论发布的日期
 	 */
-	private Date date;
+	private Timestamp date;
 	
 	/**
-	 * 回复的评论id
+	 * 回复的评论id,默认值0
 	 */
 	private int preCommentId;
 	
 	
-	public int getPreCommentTime() {
+	public int getPreCommentId() {
 		return preCommentId;
 	}
-	public void setPreCommentTime(int preCommentTime) {
-		this.preCommentId = preCommentTime;
+	public void setPreCommentId(int preCommentId) {
+		this.preCommentId = preCommentId;
 	}
 	public int getCommentId() {
 		return commentId;
@@ -66,12 +67,13 @@ public class Comment {
 	public void setPostId(int postId) {
 		this.postId = postId;
 	}
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
+	
 	@Override
 	public String toString() {
 		return "Comment [CommentId=" + commentId + ", content=" + content + ", userId=" + userId + ", postId=" + postId

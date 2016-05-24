@@ -1,6 +1,7 @@
 package com.qh.app.test;
 
-import java.sql.Date;
+import java.util.Date;
+import java.sql.Timestamp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +31,7 @@ public class CommentServiceTest {
 	public void test1(){
 		Comment comment=new Comment();
 		comment.setContent("publish测试");
-		comment.setDate(new Date(new java.util.Date().getTime()));
+		comment.setDate(new Timestamp(new Date().getTime()));
 		comment.setPostId(1);
 		comment.setUserId(1);
 		commentPublishService.Publish(comment);
