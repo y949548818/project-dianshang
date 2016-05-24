@@ -1,6 +1,7 @@
 package com.qh.app.test;
 
-import java.sql.Date;
+import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.junit.Test;
@@ -12,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ds.dao.CommentDao;
 import com.ds.domain.Comment;
 import com.ds.domain.Page;
-import com.ds.domain.Post;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/springmvc-servlet.xml")
@@ -28,7 +28,7 @@ public class CommentDaoBeanTest {
 	public void test1(){
 		Comment comment=new Comment();
 		comment.setContent("测试content1");
-		comment.setDate(new Date(new java.util.Date().getTime()));
+		comment.setDate(new Timestamp(new Date().getTime()));
 		comment.setPostId(1);
 		comment.setUserId(2);
 		comment.setPreCommentId(0);

@@ -1,6 +1,7 @@
 package com.ds.domain;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * 这个是评论的实体类
@@ -28,7 +29,7 @@ public class Comment {
 	/**
 	 * 评论发布的日期
 	 */
-	private Date date=new Date(new java.util.Date().getTime());
+	private Timestamp date;
 	
 	/**
 	 * 回复的评论id,默认值0
@@ -66,10 +67,10 @@ public class Comment {
 	public void setPostId(int postId) {
 		this.postId = postId;
 	}
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 	
