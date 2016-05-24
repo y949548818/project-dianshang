@@ -30,6 +30,7 @@
 
 	<bean id="commentdao" class="com.ds.dao.impl.CommentDaoBean" />
 	<bean id="postDao" class="com.ds.dao.impl.PostDaoBean" />
+	<bean id="typeDao" class="com.ds.dao.impl.TypeDaoBean" />
 
 
 	<bean id="userService" class="com.ds.service.impl.UserServiceBean" />

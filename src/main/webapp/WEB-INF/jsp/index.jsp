@@ -25,7 +25,27 @@
 		</div>
 	</div>
 	<div class="row">
-		<tags:pager page="${page}"></tags:pager>
+		<div class="col-md-9 col-sm-9">
+			<tags:pager page="${page}"></tags:pager>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    个人信息
+                </div>
+                <div class="panel-body">
+                    
+                </div>
+            </div>
+            <div class="panel panel-default">
+                
+                <div class="panel-body">
+                    <a href="/post/create" type="button" class="btn btn-primary">
+                        发布帖子
+                    </a>
+                </div>
+            </div>
+        </div>
 	</div>
 	
 </div>
