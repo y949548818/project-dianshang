@@ -50,7 +50,7 @@ public class CommentDaoBeanTest {
 	}
 	
 	/**
-	 * 测试delete,selectById
+	 * 测试delete,selectById啊
 	 */
 	@Test
 	public void test3(){
