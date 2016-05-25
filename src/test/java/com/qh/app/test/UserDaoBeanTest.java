@@ -12,7 +12,6 @@ import org.springframework.util.Assert;
 
 import com.ds.dao.CommentDao;
 import com.ds.dao.UserDao;
-import com.ds.domain.Comment;
 import com.ds.domain.Page;
 import com.ds.domain.User;
 import com.ds.service.UserInfoService;

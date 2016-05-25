@@ -1,7 +1,5 @@
 package com.qh.app.test;
 
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -11,9 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ds.dao.TypeDao;
-import com.ds.dao.TypeDao;
 import com.ds.domain.Page;
-import com.ds.domain.Type;
 import com.ds.domain.Type;
 
 
@@ -43,7 +39,7 @@ public class TypeDaoBeanTest {
 	public void test2(){
 		Type type=typeDao.selectById(2);
 		type.setName("测试3");
-		int count=typeDao.update(type.getTypeId(), type);
+		typeDao.update(type.getTypeId(), type);
 		System.out.println(type);
 	}
 	/**

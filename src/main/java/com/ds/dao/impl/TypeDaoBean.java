@@ -36,11 +36,10 @@ public class TypeDaoBean extends BaseDao<Type> implements TypeDao{
 		}
 	}
 
+
 	@Override
 	public List<Type> selectAll() {
 		final String sql="SELECT * FROM tb_type ORDER BY type_id ASC";
-
-
 		return jdbcTemplate.query(sql,new ResultSetExtractor<List<Type>>(){
 
 			@Override

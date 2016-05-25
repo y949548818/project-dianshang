@@ -1,6 +1,5 @@
 package com.ds.controller;
 
-import javax.ejb.Remove;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

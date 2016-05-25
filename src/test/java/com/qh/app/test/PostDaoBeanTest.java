@@ -46,7 +46,7 @@ public class PostDaoBeanTest {
 		Post post=postDao.selectById(2);
 		post.setTitle("这是修改后的帖子2");
 		post.setContent("这是修改后的内容");
-		int count=postDao.update(post.getPostId(), post);
+		postDao.update(post.getPostId(), post);
 		System.out.println(post);
 	}
 	/**

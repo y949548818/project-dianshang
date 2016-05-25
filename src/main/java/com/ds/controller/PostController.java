@@ -28,7 +28,7 @@ public class PostController {
 	PostServiceBean postService;
 
 
-	@RequestMapping(value="/publish",method=RequestMethod.GET)
+	@RequestMapping(value="/create",method=RequestMethod.GET)
 	public String publish(){
 		return "publishPost";
 	}

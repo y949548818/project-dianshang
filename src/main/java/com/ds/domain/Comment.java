@@ -1,6 +1,5 @@
 package com.ds.domain;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 /**

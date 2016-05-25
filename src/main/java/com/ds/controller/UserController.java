@@ -45,4 +45,9 @@ public class UserController {
 		}
 
 	}
+	@RequestMapping(value="logout",method=RequestMethod.GET)
+	public String logout(HttpSession session){
+		session.setAttribute("user",null);
+		return "redirect:/index";
+	}
 }

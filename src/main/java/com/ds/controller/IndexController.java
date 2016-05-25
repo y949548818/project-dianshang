@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.ds.dao.UserDao;
-import com.ds.domain.Type;
 import com.ds.domain.User;
 import com.ds.service.impl.PostServiceBean;
 import com.ds.service.impl.TypeServiceBean;
@@ -34,17 +33,13 @@ public class IndexController {
 		if("all".equals(type))
 		{
 			mav.addObject("page",postService.getPosts(pageNo, pageSize));
-			mav.addObject("currentType",type);
-			mav.addObject("types",typeService.selectAll());
-			
+			//TODO 这里以后要改成真实的type
+			mav.addObject("currentType","测试");
+			mav.addObject("types",typeService.selectAllForMap());
 		}
 		else{
 			
 		}
-		
-		
-		
-		
 		return mav;
 	}
 	@Autowired
