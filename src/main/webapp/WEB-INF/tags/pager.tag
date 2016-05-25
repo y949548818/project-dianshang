@@ -31,7 +31,7 @@
 			<li class="disabled"><a >&laquo;</a></li>
 		</c:when>
 		<c:otherwise>
-			<li><a href="<c:url value="/?page=${page.currentPageNo -1 }" />">&laquo;</a></li>
+			<li><a href="<c:url value="/?page=${page.currentPageNo -1 }&type=${currentType}" />">&laquo;</a></li>
 		</c:otherwise>
 	</c:choose>
 	
@@ -42,7 +42,7 @@
 					<c:forEach begin="1" end="5" step="1" var="pageNumber">
 						<li
 							<c:if test="${pageNumber==page.currentPageNo }">class="active"</c:if>><a
-							href="<c:url value="/?page=${ pageNumber}" />">${pageNumber}</a></li>
+							href="<c:url value="/?page=${ pageNumber}&type=${currentType}" />">${pageNumber}</a></li>
 					</c:forEach>
 					<li><a>...</a></li>
 				</c:when>
@@ -51,7 +51,7 @@
 						var="pageNumber">
 						<li
 							<c:if test="${pageNumber==page.currentPageNo }">class="active"</c:if>><a
-							href="<c:url value="/?page=${ pageNumber}" />">${pageNumber}</a></li>
+							href="<c:url value="/?page=${ pageNumber}&type=${currentType}" />">${pageNumber}</a></li>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
@@ -63,7 +63,7 @@
 						var="pageNumber">
 						<li
 							<c:if test="${pageNumber==page.currentPageNo }">class="active"</c:if>><a
-							href='<c:url value="/?page=${ pageNumber}" />'>${pageNumber}</a></li>
+							href='<c:url value="/?page=${ pageNumber}&type=${currentType}" />'>${pageNumber}</a></li>
 					</c:forEach>
 
 				</c:when>
@@ -73,7 +73,7 @@
 						end="${ page.totalPageCount}" step="1" var="pageNumber">
 						<li
 							<c:if test="${pageNumber==page.currentPageNo }">class="active"</c:if>><a
-							href="<c:url value="/?page=${ pageNumber}" />">${pageNumber}</a></li>
+							href="<c:url value="/?page=${ pageNumber}&type=${currentType}" />">${pageNumber}</a></li>
 					</c:forEach>
 
 				</c:when>
@@ -98,7 +98,7 @@
 			<li class="disabled"><a>&raquo;</a></li>
 		</c:when>
 		<c:otherwise>
-			<li><a href="<c:url value="/?page=${page.currentPageNo +1 }" />">&raquo;</a></li>
+			<li><a href="<c:url value="/?page=${page.currentPageNo +1 }&type=${currentType}" />">&raquo;</a></li>
 		</c:otherwise>
 	</c:choose>
 

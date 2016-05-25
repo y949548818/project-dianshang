@@ -3,20 +3,20 @@ package com.ds.exception;
 import javax.servlet.ServletException;
 
 /**
- * 用户未登录
+ * 没有这种类别的post
  * @author qq245521957
  *
  */
-public class UnloginException extends ServletException{
+public class UnknowTypeException extends ServletException{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 
 	@Override
 	public String getMessage() {
-		return "用户未登录";
+		return "没有相关的类别";
 	}
 
 }

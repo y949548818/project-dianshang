@@ -13,4 +13,10 @@ public interface TypeSelectService {
 	 * @return
 	 */
 	Map<Integer,String> selectAllForMap();
+	
+	/**
+	 * 通过那么查Type
+	 * @return
+	 */
+	Type selectByName(String name) throws Exception;
 }

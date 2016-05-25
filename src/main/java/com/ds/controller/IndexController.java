@@ -25,21 +25,18 @@ public class IndexController {
 	@Autowired
 	TypeServiceBean typeService;
 	@RequestMapping(value = {"/index.do","/index.html","/index","/"},method=RequestMethod.GET)
-	public ModelAndView index(@RequestParam(value="page",defaultValue="1",required=false)int pageNo,@RequestParam(value="type",defaultValue="all",required=false)String type){
+	public ModelAndView index(@RequestParam(value="page",defaultValue="1",required=false)int pageNo,@RequestParam(value="type",defaultValue="all",required=false)String type)
+			throws Exception
+	{
 		ModelAndView mav=new ModelAndView("index");
 		System.out.println("index has request");
 		int pageSize=10;
 		//如果type为null,说明是默认的显示类别
-		if("all".equals(type))
-		{
-			mav.addObject("page",postService.getPosts(pageNo, pageSize));
-			//TODO 这里以后要改成真实的type
-			mav.addObject("currentType","测试");
-			mav.addObject("types",typeService.selectAllForMap());
-		}
-		else{
-			
-		}
+		//TODO 这里以后要改成返回相关type的page
+		mav.addObject("page",postService.getPosts(pageNo, pageSize));
+		//TODO 这里以后要改成真实的type
+		mav.addObject("currentType",typeService.selectByName(type));
+		mav.addObject("types",typeService.selectAllForMap());
 		return mav;
 	}
 	@Autowired
@@ -47,11 +44,11 @@ public class IndexController {
 	@ResponseBody
 	@RequestMapping("/json")
 	public String json(){
-//		System.out.println("json have a connection");
+		//		System.out.println("json have a connection");
 		List<User>users=new ArrayList<User>();
 		users.add(new User(1, "admin","1.1.1.1", 16));
 		users.add(new User(2, "admin2", "1.1.1.1",16));
-		
+
 		return JSON.toJSONString(users);
 	}
 	@ResponseBody
@@ -61,5 +58,5 @@ public class IndexController {
 		return userDao.selectAll().toString();
 	}
 
-	
+
 }

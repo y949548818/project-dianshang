@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ds.dao.TypeDao;
 import com.ds.domain.Type;
+import com.ds.exception.UnknowTypeException;
+import com.ds.exception.UnloginException;
 import com.ds.service.TypeSelectService;
 
 /**
@@ -33,6 +35,16 @@ public class TypeServiceBean implements TypeSelectService {
 			typeMap.put(type.getTypeId(),type.getName());
 		}
 		return typeMap;
+	}
+
+	@Override
+	public Type selectByName(String name) throws Exception {
+		// TODO Auto-generated method stub
+		Type type= typeDao.selectByName(name);
+		if(type==null){
+			throw new UnknowTypeException();
+		}
+		return type;
 	}
 
 }

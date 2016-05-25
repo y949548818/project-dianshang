@@ -36,6 +36,22 @@ public class TypeDaoBean extends BaseDao<Type> implements TypeDao{
 		}
 	}
 
+	
+	@Override
+	public Type selectByName(String name) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM tb_type WHERE name = ?";
+		Object[] params=new Object[]{name};
+		//return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(), params);
+		List<Type> lists= jdbcTemplate.query(sql, params, new BeanPropertyRowMapper<Type>(Type.class));
+		if(lists.size()==0){
+			return null;
+		}
+		else{
+			return lists.get(0);
+		}
+	}
+
 
 	@Override
 	public List<Type> selectAll() {
