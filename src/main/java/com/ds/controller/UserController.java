@@ -37,7 +37,7 @@ public class UserController {
 		if(res!=null&&res.getPassword().equals(user.getPassword())){
 			session.setAttribute("user", res);
 			//TODO 需要再往login表里写入此用户登录了
-			return "redirect:/static/image/1.jpg";
+			return "redirect:/index";
 		}
 		else{
 			result.addError(new ObjectError("login", "用户名或密码错误"));

@@ -25,7 +25,8 @@ public class IndexController {
 	@Autowired
 	TypeServiceBean typeService;
 	@RequestMapping(value = {"/index.do","/index.html","/index","/"},method=RequestMethod.GET)
-	public ModelAndView index(@RequestParam(value="page",defaultValue="1",required=false)int pageNo,@RequestParam(value="type",defaultValue="all",required=false)String type)
+	public ModelAndView index(@RequestParam(value="page",defaultValue="1",required=false)int pageNo,
+			@RequestParam(value="type",defaultValue="测试",required=false)String type)
 			throws Exception
 	{
 		ModelAndView mav=new ModelAndView("index");

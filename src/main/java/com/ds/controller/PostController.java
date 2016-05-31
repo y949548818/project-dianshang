@@ -30,7 +30,7 @@ public class PostController {
 
 	@RequestMapping(value="/create",method=RequestMethod.GET)
 	public String publish(){
-		return "publishPost";
+		return "post/publishPost";
 	}
 	@RequestMapping(value="/show/{post_id}",method=RequestMethod.GET)
 	public ModelAndView show(@PathVariable int post_id){
@@ -50,9 +50,6 @@ public class PostController {
 			PrintWriter writer){
 
 		ReturnStatus status=new ReturnStatus();
-		//		System.out.println("title:" + title);
-		//		System.out.println("postAdmin:" + postAdmin);
-		//		System.out.println("content:" + content);
 		if("".equals(title)||postAdmin==-1||"".equals(content)){
 			status.addReason("参数不全");
 			status.setResultKey(ReturnStatus.ERROR);
@@ -69,7 +66,6 @@ public class PostController {
 		else{
 			status.setResultKey(ReturnStatus.ERROR);
 		}
-		//		writer.print(JSON.toJSONString(status));
 		writer.write(JSON.toJSONString(status));
 		return;
 	}

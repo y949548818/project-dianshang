@@ -14,15 +14,11 @@ public class MyExceptionHandler implements HandlerExceptionResolver{
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
 			Exception ex) {
-		System.out.println("-----------------------");
-		ex.printStackTrace();
-		System.out.println("------------------------");
 		if(ex instanceof UnloginException){
 			return handleUnlogin((UnloginException) ex, request,
 					response, handler);
 		}
 		else if(ex instanceof UnknowTypeException){
-			System.out.println("------------------------!!!!!!!!!!!!!!");
 			return handleUnknownType((UnknowTypeException) ex, request,
 					response, handler);
 		}
