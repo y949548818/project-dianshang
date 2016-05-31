@@ -25,7 +25,7 @@ import com.ds.service.impl.UserServiceBean;
  *
  */
 @Controller
-@RequestMapping("/android")
+@RequestMapping("/android") 
 public class AndroidController {
 	
 	@Autowired
