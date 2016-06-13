@@ -43,5 +43,11 @@ public class PostServiceBean implements PostInfoService,PostPublishService,PostS
 		return postDao.page(pageNo, pageSize);
 	}
 
+	@Override
+	public Post selectPostById(int id) {
+		// TODO Auto-generated method stub
+		return postDao.selectById(id);
+	}
+
 	
 }

@@ -15,11 +15,11 @@ public interface IDao<T> {
 	/**
 	 * 根据指定的Id查照记录
 	 * 
-	 * @param userId
+	 * @param id
 	 *            要查找的id
 	 * @return 存在时返回一个对象，不存在时返回null
 	 */
-	T selectById(int userId);
+	T selectById(int id);
 	
 	/**
 	 * 查询所有

@@ -39,10 +39,8 @@ public class PostController {
 	public ModelAndView show(@PathVariable int post_id){
 		System.out.println(post_id);
 		ModelAndView mav=new ModelAndView("post/show");
-		Post post=new Post();
-		post.setContent("<p>123123</p>"
-				+ "<p>456</p>");
-		post.setTitle("123");
+		Post post=postService.selectPostById(post_id);
+		
 		mav.addObject("post", post);
 		return mav;
 	}

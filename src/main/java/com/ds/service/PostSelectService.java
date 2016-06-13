@@ -18,4 +18,6 @@ public interface PostSelectService {
 	 * @return
 	 */
 	Page<Post> getPosts(int pageNo, int pageSize);
+	
+	Post selectPostById(int id);
 }
