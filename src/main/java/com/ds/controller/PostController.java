@@ -2,6 +2,8 @@ package com.ds.controller;
 
 import java.io.PrintWriter;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSON;
 import com.ds.domain.Post;
 import com.ds.domain.ReturnStatus;
+import com.ds.domain.User;
 import com.ds.service.impl.PostServiceBean;
 
 /**
@@ -45,21 +48,25 @@ public class PostController {
 	}
 	@RequestMapping(value="/publish",method=RequestMethod.POST)
 	public void doPublish(@RequestParam(name="title",required=false,defaultValue="")String title,
-			@RequestParam(name="postAdmin",required=false,defaultValue="-1")int postAdmin,
 			@RequestParam(name="content",required=false,defaultValue="")String content,
-			PrintWriter writer){
-
+			PrintWriter writer,
+			HttpSession session
+			){
+		User user=(User) session.getAttribute("user");
 		ReturnStatus status=new ReturnStatus();
-		if("".equals(title)||postAdmin==-1||"".equals(content)){
+		if("".equals(title)||"".equals(content)){
 			status.addReason("参数不全");
 			status.setResultKey(ReturnStatus.ERROR);
 			writer.write(JSON.toJSONString(status));
 			return;
 		}
+		//TODO 这里要添加post的type
 		Post post=new Post();
 		post.setTitle(title);
-		post.setUserId(postAdmin);
+		post.setUserId(user.getUserId());
 		post.setContent(content);
+		post.setType(1);
+		System.out.println(post);
 		if(postService.publish(post)){
 			status.setResultKey(ReturnStatus.SUCCESS);
 		}
@@ -67,6 +74,8 @@ public class PostController {
 			status.setResultKey(ReturnStatus.ERROR);
 		}
 		writer.write(JSON.toJSONString(status));
+		
+		System.out.println(content);
 		return;
 	}
 

@@ -21,18 +21,36 @@
 	<%@ include file="/WEB-INF/include/nav.jsp"%>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3">
-				<form action="" role="form">
-					<script id="container" name="content" type="text/plain">
-        这里写你的初始化内容
-    </script>
+			
+				<form action="<c:url value="/post/publish"/>"  method="post" role="form" id="form">
+					<div class="form-group">
+						<label for="name">标题</label>
+						<input type="text" class="form-control" id="title"  name ="title"
+						   placeholder="请输入标题">
+					</div>
+					
+					<script id="container" name="content" type="text/plain"  style="width:100%">
+       
+   					 </script>
+   					 <input type="submit" class="btn"/>
 				</form>
-			</div>
+			
 		</div>
 	</div>
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
-        var ue = UE.getEditor('container');
+        var ue = UE.getEditor('container',{
+            initialFrameWidth : $("#form").width(),
+            initialFrameHeight: 600,
+        });
+        $('#edui1').attr("style","width:100%; z-index: 999;");
+        
+        console.log(''+$("#form").width());
+        console.log(''+$("window").height());
+        $(window).resize(function () {          //当浏览器大小变化时
+        	$('#edui1').attr("style","width:100%; z-index: 999;");
+ 
+        });
     </script>
 </body>
 </html>
