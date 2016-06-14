@@ -123,4 +123,10 @@ public class CommentDaoBean extends BaseDao<Comment> implements CommentDao{
 		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,new Object[]{},  new BeanPropertyRowMapper<Comment>(Comment.class));
 	}
 
+	@Override
+	public List<Comment> selectAllByPostId(int postId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

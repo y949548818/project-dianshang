@@ -1,5 +1,7 @@
 package com.ds.dao;
 
+import java.util.List;
+
 import com.ds.domain.Comment;
 
 /**
@@ -9,6 +11,6 @@ import com.ds.domain.Comment;
  */
 public interface CommentDao  extends IDao<Comment>{
 
-	
+	List<Comment> selectAllByPostId(int postId);
 	
 }

@@ -14,13 +14,17 @@ public class Bullet {
 	 */
 	private int bulletId;
 	/**
+	 * 视频id
+	 */
+	private int videoId;
+	/**
 	 * 评论内容
 	 */
 	private String content;
 	/**
 	 * 发布时间
 	 */
-	private Timestamp date;
+	private Timestamp publishTime;
 	/**
 	 * 弹幕的颜色
 	 */
@@ -28,11 +32,15 @@ public class Bullet {
 	/**
 	 * 弹幕的模式
 	 */
-	private int mode;
+	private int mode=1;
 	/**
 	 * 发布者的id
 	 */
 	private int userId;
+	/**
+	 * 视频的时间
+	 */
+	private int videoTime;
 	/**
 	 * 随机从右边某个高度出现。然后自右向左移动
 	 */
@@ -71,22 +79,36 @@ public class Bullet {
 	public void setMode(int mode) {
 		this.mode = mode;
 	}
-	public Timestamp getDate() {
-		return date;
-	}
-	public void setDate(Timestamp date) {
-		this.date = date;
-	}
 	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+	public Timestamp getPublishTime() {
+		return publishTime;
+	}
+	public void setPublishTime(Timestamp publishTime) {
+		this.publishTime = publishTime;
+	}
+	public int getVideoTime() {
+		return videoTime;
+	}
+	public void setVideoTime(int videoTime) {
+		this.videoTime = videoTime;
+	}
+	
+	public int getVideoId() {
+		return videoId;
+	}
+	public void setVideoId(int videoId) {
+		this.videoId = videoId;
+	}
 	@Override
 	public String toString() {
-		return "Bullet [bulletId=" + bulletId + ", content=" + content + ", date=" + date + ", color=" + color
-				+ ", mode=" + mode + ", userId=" + userId + "]";
+		return "Bullet [bulletId=" + bulletId + ", videoId=" + videoId + ", content=" + content + ", publishTime="
+				+ publishTime + ", color=" + color + ", mode=" + mode + ", userId=" + userId + ", videoTime="
+				+ videoTime + "]";
 	}
 
 	
