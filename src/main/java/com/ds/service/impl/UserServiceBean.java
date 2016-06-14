@@ -22,6 +22,7 @@ public class UserServiceBean  implements UserInfoService,UserLoginService,UserRe
 	@Override
 	public void register(User user) {
 		//TODO 用户注册功能
+		userDao.insert(user);
 	}
 
 	@Override

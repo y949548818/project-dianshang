@@ -30,11 +30,23 @@ public class UserController {
 		return "user/regist";
 	}
 	@RequestMapping(value="regist",method=RequestMethod.POST)
-	public void doRegister(@Valid @ModelAttribute("user") User user,
+	public String doRegister(@Valid @ModelAttribute("user") User user,
 			BindingResult result,
 			HttpSession session){
-		System.out.println(result.getAllErrors());
-		System.out.println(user);
+		if(result.getErrorCount()>0){
+			return "user/regist";
+		}
+		User res=userService.getUserByUserName(user.getUsername());
+		if(res!=null){
+			result.addError(new ObjectError("user", "用户名重复"));
+			return "user/regist";
+		}
+		else{
+			userService.register(user);
+			session.setAttribute("user", user);
+			//TODO 需要再往login表里写入此用户登录了
+			return "redirect:/index";
+		}
 	}
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public String doLogin(@Valid @ModelAttribute("user") User user,

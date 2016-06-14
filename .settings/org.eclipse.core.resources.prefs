@@ -24,6 +24,7 @@ encoding//src/main/webapp/WEB-INF/include/nav.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/index.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/post/show.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/user/regist.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/video/index.jsp=UTF-8
 encoding//src/test/java/com/qh/app/test/CommentDaoBeanTest.java=UTF-8
 encoding//src/test/java/com/qh/app/test/CommentServiceTest.java=UTF-8
 encoding//src/test/java/com/qh/app/test/PostDaoBeanTest.java=UTF-8
