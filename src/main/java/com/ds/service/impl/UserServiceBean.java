@@ -1,6 +1,7 @@
 package com.ds.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ds.dao.UserDao;
 import com.ds.domain.Page;
@@ -14,6 +15,7 @@ import com.ds.service.UserRegisterService;
  * @author asus
  *
  */
+@Service
 public class UserServiceBean  implements UserInfoService,UserLoginService,UserRegisterService{
 
 	@Autowired

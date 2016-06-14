@@ -12,11 +12,15 @@
 	<div class="container" />
 		<div class="text-center">
 		<video src="<c:url value="/static/video/1.mp4"/>" controls="controls">
-		您的浏览器不支持 video 标签。
+			您的浏览器不支持 video 标签。
 		</video>
 		</div>
 	</div>	
-	
+	<script type="text/javascript">
+		$.get("<c:url value="/video/getbullet/123" />", function(data){
+		  alert("Data Loaded: " + data);
+		});
+	</script>
 	
 </body>
 </html>

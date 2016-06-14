@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ds.dao.TypeDao;
 import com.ds.domain.Type;
@@ -17,6 +18,7 @@ import com.ds.service.TypeSelectService;
  * @author qq245521957
  *
  */
+@Service
 public class TypeServiceBean implements TypeSelectService {
 	
 	@Autowired

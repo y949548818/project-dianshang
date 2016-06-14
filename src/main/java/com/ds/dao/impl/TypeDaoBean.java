@@ -14,12 +14,14 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import com.ds.dao.TypeDao;
 import com.ds.domain.Page;
 import com.ds.domain.Type;
 
 
+@Repository
 public class TypeDaoBean extends BaseDao<Type> implements TypeDao{
 
 	@Override

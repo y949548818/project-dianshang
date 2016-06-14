@@ -13,12 +13,14 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import com.ds.dao.PostDao;
 import com.ds.domain.Page;
 import com.ds.domain.Post;
 import com.mysql.jdbc.Statement;
 
+@Repository
 public class PostDaoBean extends BaseDao<Post> implements PostDao {
 
 

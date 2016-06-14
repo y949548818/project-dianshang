@@ -1,6 +1,7 @@
 package com.ds.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ds.dao.CommentDao;
 import com.ds.domain.Comment;
@@ -12,6 +13,7 @@ import com.ds.service.CommentPublishService;
  * @author y949548818
  *
  */
+@Service
 public class CommentServiceBean  implements CommentInfoService,CommentPublishService{
 
 

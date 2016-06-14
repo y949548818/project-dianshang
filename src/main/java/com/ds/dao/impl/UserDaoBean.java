@@ -15,11 +15,13 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import com.ds.dao.UserDao;
 import com.ds.domain.Page;
 import com.ds.domain.User;
 
+@Repository
 public class UserDaoBean extends BaseDao<User> implements UserDao{
 
 

@@ -1,6 +1,7 @@
 package com.ds.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ds.dao.PostDao;
 import com.ds.domain.Page;
@@ -14,6 +15,7 @@ import com.ds.service.PostSelectService;
  * @author qq245521957
  *
  */
+@Service
 public class PostServiceBean implements PostInfoService,PostPublishService,PostSelectService{
 
 	
