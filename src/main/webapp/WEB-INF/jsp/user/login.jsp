@@ -32,28 +32,31 @@
 
 					<div class="panel-body">
 
-						<form:form action='/project-dianshang/user/login' role="form"
-							method="post" modelAttribute="user">
+						<form action='<c:url value="/user/login"/>' role="form"
+							method="post" id="user">
 							<c:if test="${!empty error}">
 								<p>${error}</p>
 							</c:if>
 							<spring:hasBindErrors name="user">
 								<div class="alert alert-danger" role="alert">
-									<form:errors path="*" />
+									<c:forEach items="${errors.allErrors }" var="error">
+										${error.defaultMessage}
+										<br/>
+									</c:forEach>
 								</div>
 							</spring:hasBindErrors>
 							<div class="form-group">
 								<label for="username">用户名：</label>
-								<form:input class="form-control" path="username"
+								<input type="text" class="form-control" name="username"
 									placeholder="请输入用户名" />
 							</div>
 							<div class="form-group">
 								<label for="password">密码：</label>
-								<form:password class="form-control" path="password"
+								<input type="password" class="form-control" name="password"
 									placeholder="请输入密码" />
 							</div>
 							<input type="submit" class="btn btn-primary" />
-						</form:form>
+						</form>
 					</div>
 				</div>
 			</div>

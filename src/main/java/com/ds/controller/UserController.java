@@ -25,11 +25,21 @@ public class UserController {
 	public String login(@ModelAttribute("user") User user){
 		return "user/login";
 	}
+	@RequestMapping(value="regist",method=RequestMethod.GET)
+	public String register(@ModelAttribute("user") User user){
+		return "user/regist";
+	}
+	@RequestMapping(value="regist",method=RequestMethod.POST)
+	public void doRegister(@Valid @ModelAttribute("user") User user,
+			BindingResult result,
+			HttpSession session){
+		System.out.println(result.getAllErrors());
+		System.out.println(user);
+	}
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public String doLogin(@Valid @ModelAttribute("user") User user,
 			BindingResult result,
 			HttpSession session){
-		
 		if(result.getErrorCount()>0){
 			return "user/login";
 		}
@@ -40,7 +50,7 @@ public class UserController {
 			return "redirect:/index";
 		}
 		else{
-			result.addError(new ObjectError("login", "用户名或密码错误"));
+			result.addError(new ObjectError("user", "用户名或密码错误"));
 			return "user/login";
 		}
 

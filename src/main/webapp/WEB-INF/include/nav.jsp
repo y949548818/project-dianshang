@@ -17,17 +17,15 @@
 			<c:when test="${ not empty sessionScope.user }">
 	            <li class="active"><a href="/">首页</a></li>
 	            <li><a href="<c:url value="/message" />">未读消息</a></li>
-	            <li><a href="<c:url value="/start" />">新手入门</a></li>
-	            <li><a href="<c:url value="/API" />">API</a></li>
+
 	            <li><a href="<c:url value="/about" />">关于</a></li>
 	            <li><a href="<c:url value="/user/setting" />">设置</a></li>
 	            <li><a href="<c:url value="/user/logout" />">退出</a></li>
          	</c:when>
          	<c:otherwise>
 	            <li class="active"><a href="/">首页</a></li>
-	            <li><a href="<c:url value="/start" />">新手入门</a></li>
-	            <li><a href="<c:url value="/API" />">API</a></li>
-	            <li><a href="<c:url value="/user/register" />">注册</a></li>
+
+	            <li><a href="<c:url value="/user/regist" />">注册</a></li>
 	            <li><a href="<c:url value="/user/login" />">登录</a></li>
             </c:otherwise>
 		</c:choose>
