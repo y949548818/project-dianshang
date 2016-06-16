@@ -24,19 +24,40 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/include/nav.jsp"%>
-	<div class="container" />
+	<div class="container" >
 		<div id="video-wrap">
 			<video id ="video" src="<c:url value="/static/video/1.mp4"/>"  controls="controls" width="100%">
 			您的浏览器不支持 video 标签。
 
 			</video>
-			<!-- <div class="bullet">
-				
-			</div> -->
 		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="input-group">
+               <span class="input-group-btn" >
+                  <button class="btn btn-default" type="button" data-toggle="tooltip" 
+   					data-placement="top" title="弹幕设置">
+                     Go!
+                  </button>
+               </span>
+               <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" data-toggle="tooltip" 
+   					data-placement="top" title="弹幕颜色">
+                     Go!
+                  </button>
+               </span>               
+               <input type="text" class="form-control">
+               <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" >
+                     发送
+                </button>
+                </span>   
+            </div><!-- /input-group -->
+		</div>
+	
 	</div>	
 
 	<script type="text/javascript">
+		$(function () { $("[data-toggle='tooltip']").tooltip(); });
 		window.onload=function(){
 		var bullets;
 		//当前的弹幕的位置

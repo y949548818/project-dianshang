@@ -37,7 +37,6 @@ public class VideoController {
 			@RequestParam(value="amount",defaultValue="100",required=false)int amount,
 			PrintWriter out){
 		List<Bullet> bullets=bulletService.getSomeBulletsByVideoIdAndTime(videoId, startTime, amount);
-		
 		out.print(JSON.toJSONString(bullets));
 	}
 

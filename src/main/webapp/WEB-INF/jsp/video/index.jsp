@@ -9,55 +9,51 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/include/nav.jsp"%>
-	<div class="container" />
-		<div class="text-center">
-		<video id ="video" src="<c:url value="/static/video/1.mp4"/>" controls="controls">
-			您的浏览器不支持 video 标签。
-		</video>
-		</div>
-	</div>	
-	<script type="text/javascript">
+	<div class="container">
 		
-		var bullets;
-		//当前的弹幕的位置
-		var bulletsIndex;
-		var video=document.getElementById("video");
-		$.get("<c:url value="/video/getbullet" />",{videoId:5,startTime:0,amount:100} ,function(data){
-			  bullets=eval(data);
-			  console.log(bullets);
-		});
-		video.onplay=function(){
-			console.log("play from "+video.currentTime);
-			var currentTime=video.currentTime;
-			//TODO 从bullets中读取时间大于当前时间的
-			for(var i=0;i<bullets.length;i++ ){
-				if(bullets[i].videoTime>=currentTime)
-				{
-					bulletsIndex=i;
-					console.log("bulletsIndex is "+bulletsIndex)
-					break;
-				}
-			}
-		}
-		video.onpause=function(){
-			console.log("pause to "+video.currentTime);
-		}
-		video.ontimeupdate=function(a){
-			var currentTime=video.currentTime;
-			console.log("currentTime is "+currentTime);
-			for(var i=bulletsIndex;i<bullets.length;i++ ){
-				if(currentTime>=bullets[i].videoTime-0.5){
-					bulletsIndex++
-					//TODO 按照mode来展示弹幕
-					console.log(bullets[i].content)
-				}
-				else{
-					break;
-				}
-			}
-			
-		}
-	</script>
+		<div class="row">
+			<div class="col-md-9 col-sm-9">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<c:forEach items="${types}" var="type">
+							<c:choose>
+								<c:when test="${type.value==currentType }">
+									<a type="button" class="btn btn-primary">${type.value}</a>
+								</c:when>
+								<c:otherwise>
+									<a type="button" class="btn btn-link">${type.value}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+					</div>
+					<div class="panel-body">
+						<tags:pager page="${page}" types="${types}"></tags:pager>
+					</div>
+					<div class="panel-footer"></div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<!-- 个人面板 -->
+				<c:if test="${not empty sessionScope.user  }">
+					<div class="panel panel-default">
+						<div class="panel-heading">个人信息</div>
+						<div class="panel-body">
+							<img src="/wp-content/uploads/2014/06/download.png" 
+   								class="img-thumbnail">
+   							${sessionScope.user.username}
+						</div>
+					</div>
+				</c:if>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<a href='<c:url value="/post/create"/>' type="button" class="btn btn-primary">
+							发布帖子 </a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
 	
 </body>
 </html>

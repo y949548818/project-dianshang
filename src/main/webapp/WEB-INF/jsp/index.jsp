@@ -40,7 +40,7 @@
 						</c:forEach>
 					</div>
 					<div class="panel-body">
-						<tags:pager page="${page}" types="${types}"></tags:pager>
+						<tags:postPager page="${page}" types="${types}"></tags:postPager>
 					</div>
 					<div class="panel-footer"></div>
 				</div>
