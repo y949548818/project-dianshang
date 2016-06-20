@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ds.dao.BulletDao;
 import com.ds.dao.PostDao;
+import com.ds.dao.impl.BulletDaoBean;
 import com.ds.domain.Bullet;
 import com.ds.domain.Page;
 import com.ds.domain.Post;
@@ -52,18 +53,52 @@ public class BulletDaoBeanTest {
 		System.out.println(bullets);
 	}
 
+	/**
+	 * 测试selectAllByVideoIdAndStartTime
+	 */
 	@Test
 	public void test3(){
 		List<Bullet> bullets=bulletDao.selectAllByVideoIdAndStartTime(5, 10);
 		System.out.println(bullets);
 	}
 	/**
-	 * 测试selectSome
+	 * 测试selectSomeByVideoIdAndStartTime
 	 */
 	@Test
 	public void test4(){
 		List<Bullet> bullets=bulletDao.selectSomeByVideoIdAndStartTime(5, 10, 1);
 		System.out.println(bullets);
 	}
+	
+	/**
+	 * 测试selectById
+	 */
+	@Test
+	public void test5(){
+		Bullet bullet=bulletDao.selectById(35);
+		System.out.println(bullet.toString());
+	}
+	
+	/**
+	 * 测试update
+	 */
+	@Test
+	public void test6(){
+		Bullet bullet=bulletDao.selectById(35);
+		System.out.println(bullet.toString());
+		bullet.setContent("修改后的测试内容");
+		bulletDao.update(bullet.getBulletId(), bullet);
+		bullet=bulletDao.selectById(35);
+		System.out.println(bullet.toString());
+	}
+	
+	/**
+	 * 测试delete
+	 */
+	@Test
+	public void test7(){
+		System.out.println(bulletDao.delete(35));
+	}
+	
 
 }

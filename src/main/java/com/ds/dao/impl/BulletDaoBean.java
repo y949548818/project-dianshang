@@ -8,16 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowCallbackHandler;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.ds.dao.BulletDao;
 import com.ds.domain.Bullet;
-import com.ds.domain.Comment;
 import com.ds.domain.Page;
+import com.ds.domain.Post;
 import com.mysql.jdbc.Statement;
 
 @Repository
@@ -25,20 +28,55 @@ public class BulletDaoBean extends BaseDao<Bullet> implements BulletDao{
 
 	@Override
 	public Bullet selectById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql="select * from tb_bullet where bullet_id=?";
+		Object[] params=new Object[]{id};
+		final Bullet bullet=new Bullet();
+		jdbcTemplate.query(sql, params, new RowCallbackHandler(){
+
+			@Override
+			public void processRow(ResultSet rs) throws SQLException {
+				bullet.setBulletId(rs.getInt("bullet_id"));
+				bullet.setColor(rs.getInt("color"));
+				bullet.setContent(rs.getString("content"));
+				bullet.setMode(rs.getInt("mode"));
+				bullet.setPublishTime(rs.getTimestamp("publish_time"));
+				bullet.setUserId(rs.getInt("user_id"));
+				bullet.setVideoId(rs.getInt("video_id"));
+				bullet.setVideoTime(rs.getInt("video_time"));
+				
+			}
+			
+		});
+		return (bullet.getBulletId()==0)?null:bullet;
 	}
 
 	@Override
 	public List<Bullet> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql="select * from tb_bullet";
+		List<Bullet> list=new ArrayList<Bullet>();
+		return jdbcTemplate.query(sql, new RowMapper<Bullet>(){
+
+			@Override
+			public Bullet mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Bullet bullet=new Bullet();
+				bullet.setBulletId(rs.getInt("bullet_id"));
+				bullet.setColor(rs.getInt("color"));
+				bullet.setContent(rs.getString("content"));
+				bullet.setMode(rs.getInt("mode"));
+				bullet.setPublishTime(rs.getTimestamp("publish_time"));
+				bullet.setUserId(rs.getInt("user_id"));
+				bullet.setVideoId(rs.getInt("video_id"));
+				bullet.setVideoTime(rs.getInt("video_time"));
+				return bullet;
+			}
+			
+		});
 	}
 
 	@Override
 	public int insert(Bullet bullet) {
-		String sql="insert into tb_bullet(user_id,video_id,content,publish_time,video_time,color,mode) values(?,?,?,?,?,?,?)";
-		Object[] params=new Object[]{
+		final String sql="insert into tb_bullet(user_id,video_id,content,publish_time,video_time,color,mode) values(?,?,?,?,?,?,?)";
+		final Object[] params=new Object[]{
 				bullet.getUserId(),
 				bullet.getVideoId(),
 				bullet.getContent(),
@@ -68,20 +106,34 @@ public class BulletDaoBean extends BaseDao<Bullet> implements BulletDao{
 
 	@Override
 	public int update(int id, Bullet obj) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql="update tb_bullet set user_id=?,video_id=?,content=?,publish_time=?,video_time=?,color=?,mode=? where bullet_id=?";
+		Object[] params=new Object[]{
+				obj.getUserId(),
+				obj.getVideoId(),
+				obj.getContent(),
+				obj.getPublishTime(),
+				obj.getVideoTime(),
+				obj.getColor(),
+				obj.getMode(),
+				id
+		};
+		return jdbcTemplate.update(sql,params);
 	}
 
 	@Override
 	public int delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql="delete from tb_bullet where bullet_id=?";
+		Object[] params=new Object[]{id};
+		return jdbcTemplate.update(sql, params);
 	}
 
+	
+	private static final String SQL_COUNT = "SELECT count(*) FROM tb_bullet";
+	private static final String SQL_SELECT = "SELECT * FROM tb_bullet";
+	
 	@Override
 	public Page<Bullet> page(int pageNo, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		return super.pagedQuery(SQL_SELECT, SQL_COUNT, pageNo, pageSize,new Object[]{},  new BeanPropertyRowMapper<Bullet>(Bullet.class));
 	}
 
 	@Override
